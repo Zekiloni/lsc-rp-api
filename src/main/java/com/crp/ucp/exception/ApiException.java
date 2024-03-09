@@ -1,6 +1,6 @@
 package com.crp.ucp.exception;
 
-import com.crp.ucp.account.authorization.WrongPasswordException;
+import com.crp.ucp.account.authentication.BadCredentialsException;
 import com.crp.ucp.account.exception.AccountNotFoundException;
 import com.crp.ucp.server.model.ApiError;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class ApiException {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
-    @ExceptionHandler(WrongPasswordException.class)
-    public ResponseEntity<ApiError> handleWrongPassword(WrongPasswordException exception) {
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ApiError> handleWrongPassword(BadCredentialsException exception) {
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.UNAUTHORIZED.toString());
         error.setMessage(exception.getMessage());
