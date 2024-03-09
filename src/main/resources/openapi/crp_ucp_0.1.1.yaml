@@ -119,6 +119,26 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
+  /authorization:
+    post:
+      tags:
+        - authorizationApi
+      summary: Authenticate user and generate JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Authorize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '401':
+          description: Unauthorized - Invalid username or password
 components:
   schemas:
     Account:
@@ -172,6 +192,28 @@ components:
           type: string
         referralCode:
           type: string
+
+    Authorize:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    AuthorizeStatus:
+      type: object
+      properties:
+        token:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+        - token
+        - account
 
     ApiError:
       description: |
