@@ -20,6 +20,7 @@
         <java.version>17</java.version>
         <mysql-connector-java.version>8.0.11</mysql-connector-java.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+        <jjwt.version>0.12.5</jjwt.version>
         <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
         <openapi-generator-maven-plugin.version>7.1.0</openapi-generator-maven-plugin.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -51,6 +52,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
 
         <dependency>

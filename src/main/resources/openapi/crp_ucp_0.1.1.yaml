@@ -121,6 +121,7 @@ paths:
           description: Internal Server Error
   /authorization:
     post:
+      operationId: authorize
       tags:
         - authorizationApi
       summary: Authenticate user and generate JWT token
@@ -136,7 +137,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/AuthorizeStatus'
         '401':
           description: Unauthorized - Invalid username or password
 components:

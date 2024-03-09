@@ -26,8 +26,8 @@ public class AccountService {
         return this.accountRepository.findByEmail(email);
     }
 
-    public Optional<AccountEntity> getByUsername(String email) {
-        return this.accountRepository.findByEmail(email);
+    public Optional<AccountEntity> getByUsername(String username) {
+        return this.accountRepository.findByUsername(username);
     }
 
     public AccountEntity createAccount(AccountEntity account) {

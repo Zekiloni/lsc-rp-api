@@ -1,5 +1,6 @@
 package com.crp.ucp.account;
 
+import com.crp.ucp.account.exception.AccountNotFoundException;
 import com.crp.ucp.server.model.Account;
 import com.crp.ucp.server.model.AccountCreate;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static java.text.MessageFormat.format;
 
@@ -34,7 +34,7 @@ public class AccountApi implements com.crp.ucp.server.api.AccountApi {
     @Override
     public ResponseEntity<Account> retrieveAccount(Long accountId) {
         Account account = accountMapper.mapTo(accountService.getById(accountId)
-                .orElseThrow(() -> new NoSuchElementException(format("Account with ID {0} not found", accountId))));
+                .orElseThrow(() -> new AccountNotFoundException(format("Account with ID {0} not found", accountId))));
         return ResponseEntity.ok(account);
     }
 
