@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: County RP API
+  description: API
+  version: 1.0.0
+
+
+paths:
+  /account:
+    post:
+      operationId: createAccount
+      tags:
+        - accountApi
+      summary: Create a new account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreate'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+
+    get:
+      operationId: listAccount
+      tags:
+        - accountApi
+      summary: Get a list of all accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+        '500':
+          description: Internal Server Error
+
+  /account/{accountId}:
+    get:
+      operationId: retrieveAccount
+      tags:
+        - accountApi
+      summary: Get an account by ID
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+
+    patch:
+      operationId: patchAccount
+      tags:
+        - accountApi
+      summary: Update an account by ID
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdate'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+
+    delete:
+      operationId: deleteAccount
+      tags:
+        - accountApi
+      summary: Delete an account by ID
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        lastLoginAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        admin:
+          type: integer
+        referralCode:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+
+    AccountCreate:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        referralCode:
+          type: string
+      required:
+        - username
+        - email
+        - password
+
+    AccountUpdate:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        referralCode:
+          type: string
+
+    ApiError:
+      description: |
+        Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)
+      type: object
+      required:
+        - code
+        - reason
+      properties:
+        code:
+          type: string
+          description: Application relevant detail, defined in the API or a common list.
+        reason:
+          type: string
+          description: Explanation of the reason for the error which can be shown to a client user.
+        message:
+          type: string
+          description: More details and corrective actions related to the error which can be shown to a client user.
+        status:
+          type: string
+          description: HTTP Error code extension
+        referenceError:
+          type: string
+          format: uri
+          description: URI of documentation describing the error.
+        '@type':
+          type: string
+          description: When sub-classing, this defines the sub-class entity name.
