@@ -2,17 +2,13 @@ package com.crp.ucp.character;
 
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterCreate;
+import com.crp.ucp.vehicle.VehicleMapper;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {VehicleMapper.class}, componentModel = "spring")
 public interface CharacterMapper {
-
-    static CharacterMapper getInstance() {
-        return Mappers.getMapper(CharacterMapper.class);
-    }
 
     Character mapTo(CharacterEntity character);
 
@@ -21,5 +17,4 @@ public interface CharacterMapper {
     CharacterEntity mapTo(Character character);
 
     List<Character> mapTo(List<CharacterEntity> characters);
-
 }

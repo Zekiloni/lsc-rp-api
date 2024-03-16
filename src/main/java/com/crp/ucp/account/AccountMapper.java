@@ -4,20 +4,15 @@ import com.crp.ucp.character.CharacterMapper;
 import com.crp.ucp.server.model.Account;
 import com.crp.ucp.server.model.AccountCreate;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper
+@Mapper(uses = {CharacterMapper.class}, componentModel = "spring")
 public interface AccountMapper {
-
-    static AccountMapper getInstance() {
-        return Mappers.getMapper(AccountMapper.class);
-    }
 
     AccountEntity mapTo(AccountCreate accountCreate);
 
     Account mapTo(AccountEntity account);
 
-    List<Account> mapListTo(List<AccountEntity> accounts);
+    List<Account> mapTo(List<AccountEntity> accounts);
 }

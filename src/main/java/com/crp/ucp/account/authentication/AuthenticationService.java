@@ -47,8 +47,6 @@ public class AuthenticationService {
     public Optional<Account> validate(String token) {
         token = token.substring("Bearer ".length());
         token = token.substring(1, (token.length()) - 1);
-
-        System.out.printf("token now is %s", token);
         String username = jwtService.extractUsername(token);
         if (username != null && jwtService.isTokenValid(token, username)) {
             AccountEntity account = accountService.getAccountByUsername(username)

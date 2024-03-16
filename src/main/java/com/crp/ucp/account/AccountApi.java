@@ -18,7 +18,7 @@ public class AccountApi implements com.crp.ucp.server.api.AccountApi {
 
     private final AccountService accountService;
 
-    private final AccountMapper accountMapper = AccountMapper.getInstance();
+    private final AccountMapper accountMapper;
 
     @Override
     public ResponseEntity<Account> createAccount(AccountCreate accountCreate) {
@@ -28,7 +28,7 @@ public class AccountApi implements com.crp.ucp.server.api.AccountApi {
 
     @Override
     public ResponseEntity<List<Account>> listAccount() {
-        return ResponseEntity.ok(accountMapper.mapListTo(accountService.getAllAccount()));
+        return ResponseEntity.ok(accountMapper.mapTo(accountService.getAllAccount()));
     }
 
     @Override

@@ -2,11 +2,15 @@ package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.server.model.Character;
+import com.crp.ucp.vehicle.VehicleEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -84,4 +88,10 @@ public class CharacterEntity {
 
     @Column(name = "drug_addiction")
     private Integer drugAddiction;
+
+    @Column(name = "created_at")
+    private OffsetDateTime createdAt;
+
+    @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<VehicleEntity> vehicles = new ArrayList<>();
 }

@@ -1,23 +1,26 @@
 package com.crp.ucp.character;
 
-import com.crp.ucp.server.api.CharactersApi;
+import com.crp.ucp.account.exception.AccountNotFoundException;
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterCreate;
-import com.crp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static java.text.MessageFormat.format;
+
 @RestController
 @RequiredArgsConstructor
-public class CharacterApi implements CharactersApi {
+@Slf4j
+public class CharacterApi implements com.crp.ucp.server.api.CharacterApi {
 
     private final CharacterService characterService;
 
-    private final CharacterMapper characterMapper = CharacterMapper.getInstance();
+    private final CharacterMapper characterMapper;
 
     @Override
     public ResponseEntity<Character> createCharacter(CharacterCreate characterCreate) {
@@ -28,22 +31,14 @@ public class CharacterApi implements CharactersApi {
     }
 
     @Override
-    public ResponseEntity<Void> deleteCharacter(Long id) {
-        return CharactersApi.super.deleteCharacter(id);
-    }
-
-    @Override
     public ResponseEntity<List<Character>> listCharacters() {
-        return CharactersApi.super.listCharacters();
-    }
-
-    @Override
-    public ResponseEntity<Character> patchCharacter(Long id, CharacterUpdate characterUpdate) {
-        return CharactersApi.super.patchCharacter(id, characterUpdate);
+        return ResponseEntity.ok(characterMapper.mapTo(characterService.getAllCharacter()));
     }
 
     @Override
     public ResponseEntity<Character> retrieveCharacter(Long id) {
-        return CharactersApi.super.retrieveCharacter(id);
+        Character character = characterMapper.mapTo(characterService.getCharacterById(id)
+                .orElseThrow(() -> new AccountNotFoundException(format("Character with ID {0} not found", id))));
+        return ResponseEntity.ok(character);
     }
 }
