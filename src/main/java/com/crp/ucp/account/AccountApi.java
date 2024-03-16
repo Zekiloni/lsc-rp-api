@@ -28,12 +28,12 @@ public class AccountApi implements com.crp.ucp.server.api.AccountApi {
 
     @Override
     public ResponseEntity<List<Account>> listAccount() {
-        return ResponseEntity.ok(accountMapper.mapTo(accountService.getAllAccount()));
+        return ResponseEntity.ok(accountMapper.mapListTo(accountService.getAllAccount()));
     }
 
     @Override
     public ResponseEntity<Account> retrieveAccount(Long accountId) {
-        Account account = accountMapper.mapTo(accountService.getById(accountId)
+        Account account = accountMapper.mapTo(accountService.getAccountById(accountId)
                 .orElseThrow(() -> new AccountNotFoundException(format("Account with ID {0} not found", accountId))));
         return ResponseEntity.ok(account);
     }

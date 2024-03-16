@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @ControllerAdvice
 public class ApiException {
 
@@ -27,5 +29,16 @@ public class ApiException {
         error.setMessage(exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<ApiError> handleIntegrityConstraintViolation(
+            SQLIntegrityConstraintViolationException exception) {
+
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.BAD_REQUEST.toString());
+        error.setMessage(exception.getLocalizedMessage());
+
+        return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }

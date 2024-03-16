@@ -1,16 +1,16 @@
 package com.crp.ucp.account;
 
+import com.crp.ucp.character.CharacterEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor@AllArgsConstructor
 @Entity
 @Table(name = "accounts")
 public class AccountEntity {
@@ -27,6 +27,9 @@ public class AccountEntity {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CharacterEntity> characters;
 
     @Column(nullable = false)
     private Integer admin;

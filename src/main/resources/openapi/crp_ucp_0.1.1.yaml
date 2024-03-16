@@ -119,6 +119,99 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
+  /characters:
+    post:
+      summary: Create a new character
+      operationId: createCharacter
+      tags:
+        - characterApi
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CharacterCreate'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    get:
+      summary: Get a list of characters
+      operationId: listCharacters
+      tags:
+        - characterApi
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+  /characters/{id}:
+    get:
+      summary: Get a character by ID
+      operationId: retrieveCharacter
+      tags:
+        - characterApi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    patch:
+      summary: Update a character by ID
+      operationId: patchCharacter
+      tags:
+        - characterApi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CharacterUpdate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+    delete:
+      summary: Delete a character by ID
+      operationId: deleteCharacter
+      tags:
+        - characterApi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
   /authentication:
     post:
       operationId: authenticate
@@ -140,7 +233,25 @@ paths:
                 $ref: '#/components/schemas/AuthenticationStatus'
         '401':
           description: Unauthorized - Invalid username or password
+    get:
+      operationId: validate
+      tags:
+        - authenticationApi
+      summary: Validate token and return Account
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
   schemas:
     Account:
       type: object
@@ -152,6 +263,10 @@ components:
           type: string
         email:
           type: string
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Character'
         lastLoginAt:
           type: string
           format: date-time
@@ -199,6 +314,139 @@ components:
           type: string
         referralCode:
           type: string
+
+    Character:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        birthday:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum: [ '0', '1' ]
+        health:
+          type: integer
+          minimum: 0
+          maximum: 100
+        armour:
+          type: integer
+          minimum: 0
+          maximum: 100
+        skin:
+          type: integer
+        money:
+          type: integer
+        paycheck:
+          type: integer
+        bank:
+          type: integer
+        savings:
+          type: integer
+        hours:
+          type: integer
+        minutes:
+          type: integer
+        level:
+          type: integer
+        positionX:
+          type: number
+        positionY:
+          type: number
+        positionZ:
+          type: number
+        angle:
+          type: number
+        virtualWorld:
+          type: integer
+        interior:
+          type: integer
+        factionId:
+          type: integer
+        rankId:
+          type: integer
+        isLeader:
+          type: boolean
+        job:
+          type: integer
+        state:
+          type: integer
+        respawnTime:
+          type: integer
+        drugAddiction:
+          type: integer
+        walkingStyle:
+          type: integer
+          description: The walking style of the character
+        fightingStyle:
+          type: integer
+          description: The fighting style of the character
+      required:
+        - accountId
+        - name
+        - birthday
+        - gender
+        - health
+        - armour
+        - skin
+        - money
+        - paycheck
+        - bank
+        - savings
+        - hours
+        - minutes
+        - level
+        - positionX
+        - positionY
+        - positionZ
+        - angle
+        - virtualWorld
+        - interior
+        - isLeader
+        - job
+        - state
+        - respawnTime
+        - drugAddiction
+        - walkingStyle
+        - fightingStyle
+
+    CharacterCreate:
+      type: object
+      properties:
+        accountId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        birthday:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum: [ '0', '1' ]
+      required:
+        - accountId
+        - name
+        - birthday
+        - gender
+
+    CharacterUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        health:
+          type: integer
+          minimum: 0
+          maximum: 100
+        armour:
+          type: integer
+          minimum: 0
+          maximum: 100
 
     Authentication:
       type: object

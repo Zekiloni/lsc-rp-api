@@ -1,5 +1,6 @@
 package com.crp.ucp.account;
 
+import com.crp.ucp.character.CharacterMapper;
 import com.crp.ucp.server.model.Account;
 import com.crp.ucp.server.model.AccountCreate;
 import org.mapstruct.Mapper;
@@ -18,5 +19,5 @@ public interface AccountMapper {
 
     Account mapTo(AccountEntity account);
 
-    List<Account> mapTo(List<AccountEntity> accounts);
+    List<Account> mapListTo(List<AccountEntity> accounts);
 }

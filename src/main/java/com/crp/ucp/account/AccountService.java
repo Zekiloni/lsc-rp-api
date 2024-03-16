@@ -18,15 +18,15 @@ public class AccountService {
         return this.accountRepository.findAll();
     }
 
-    public Optional<AccountEntity> getById(Long id) {
+    public Optional<AccountEntity> getAccountById(Long id) {
         return this.accountRepository.findById(id);
     }
 
-    public Optional<AccountEntity> getByEmail(String email) {
+    public Optional<AccountEntity> getAccountByEmail(String email) {
         return this.accountRepository.findByEmail(email);
     }
 
-    public Optional<AccountEntity> getByUsername(String username) {
+    public Optional<AccountEntity> getAccountByUsername(String username) {
         return this.accountRepository.findByUsername(username);
     }
 
