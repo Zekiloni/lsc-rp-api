@@ -2,6 +2,7 @@ package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.server.model.Character;
+import com.crp.ucp.server.model.CharacterGender;
 import com.crp.ucp.vehicle.VehicleEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,8 +36,9 @@ public class CharacterEntity {
     @Column(name = "is_leader")
     private Boolean isLeader;
 
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")
-    private Character.GenderEnum gender;
+    private CharacterGender gender;
 
     @Column(name = "birthday")
     private LocalDate birthday;
@@ -86,11 +88,23 @@ public class CharacterEntity {
 
     private Integer state;
 
+    @Column(name = "mask_id", unique = true)
+    private String maskId;
+
     @Column(name = "drug_addiction")
     private Integer drugAddiction;
 
     @Column(name = "created_at")
     private OffsetDateTime createdAt;
+
+    @Column(name = "respawn_time", nullable = false)
+    private Integer respawnTime;
+
+    @Column(name = "walking_style", nullable = false)
+    private Integer walkingStyle;
+
+    @Column(name = "fighting_style", nullable = false)
+    private Integer fightingStyle;
 
     @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<VehicleEntity> vehicles = new ArrayList<>();

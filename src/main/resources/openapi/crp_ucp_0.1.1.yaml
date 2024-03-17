@@ -408,8 +408,7 @@ components:
           type: string
           format: date
         gender:
-          type: string
-          enum: [ '0', '1' ]
+          $ref: '#/components/schemas/CharacterGender'
         health:
           type: integer
           minimum: 0
@@ -460,6 +459,8 @@ components:
           type: integer
         state:
           type: integer
+        maskId:
+          type: string
         respawnTime:
           type: integer
         drugAddiction:
@@ -515,13 +516,18 @@ components:
           type: string
           format: date
         gender:
-          type: string
-          enum: [ '0', '1' ]
+          $ref: '#/components/schemas/CharacterGender'
+        skin:
+          type: integer
       required:
         - accountId
         - name
         - birthday
         - gender
+
+    CharacterGender:
+      type: string
+      enum: [MALE, FEMALE]
 
     CharacterUpdate:
       type: object
@@ -617,7 +623,7 @@ components:
         - owner
         - positionX
         - positionY
-        - positionY
+        - positionZ
         - rotation
         - primaryColor
         - secondaryColor

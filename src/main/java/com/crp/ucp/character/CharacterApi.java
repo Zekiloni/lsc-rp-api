@@ -25,7 +25,7 @@ public class CharacterApi implements com.crp.ucp.server.api.CharacterApi {
     @Override
     public ResponseEntity<Character> createCharacter(CharacterCreate characterCreate) {
         Character character = characterMapper.mapTo(
-                characterService.createCharacter(characterMapper.mapTo(characterCreate)));
+                characterService.createCharacter(characterMapper.mapTo(characterCreate), characterCreate.getAccountId()));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(character);
     }
