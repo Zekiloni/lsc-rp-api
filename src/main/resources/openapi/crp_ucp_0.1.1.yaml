@@ -327,7 +327,93 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vehicle'
-
+  /property:
+    get:
+      operationId: listProperties
+      tags:
+        - propertyApi
+      summary: Retrieve list of properties
+      parameters:
+        - name: type
+          in: query
+          description: Filter by property type
+          schema:
+            type: string
+            enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Property'
+    post:
+      operationId: createProperty
+      tags:
+        - propertyApi
+      summary: Create a new property
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Property'
+      responses:
+        '201':
+          description: Property created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+  /property/{id}:
+    get:
+      operationId: retrieveProperty
+      tags:
+        - propertyApi
+      summary: Retrieve a property by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the property to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+    patch:
+      operationId: patchProperty
+      tags:
+        - propertyApi
+      summary: Update a property by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the property to update
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PropertyUpdate'
+      responses:
+        '200':
+          description: Property updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
 components:
   securitySchemes:
     bearerAuth:
@@ -704,6 +790,104 @@ components:
         secondaryColor:
           type: integer
           description: Secondary color code
+    Property:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        type:
+          type: string
+          enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
+        name:
+          type: string
+          maxLength: 128
+        owner:
+          $ref: '#/components/schemas/Character'
+        price:
+          type: integer
+        address:
+          type: string
+          maxLength: 64
+        positionX:
+          type: number
+          format: float
+        positionY:
+          type: number
+          format: float
+        positionZ:
+          type: number
+          format: float
+        exteriorVirtualWorld:
+          type: integer
+        exterior:
+          type: integer
+        interiorPositionX:
+          type: number
+          format: float
+        interiorPositionY:
+          type: number
+          format: float
+        interiorPositionZ:
+          type: number
+          format: float
+        interior:
+          type: integer
+        isLocked:
+          type: boolean
+      required:
+        - name
+        - price
+        - positionX
+        - positionY
+        - positionZ
+        - exteriorVirtualWorld
+        - exterior
+        - interiorPositionX
+        - interiorPositionY
+        - interiorPositionZ
+        - interior
+    PropertyUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 128
+        price:
+          type: integer
+        address:
+          type: string
+          maxLength: 64
+        positionX:
+          type: number
+          format: float
+        positionY:
+          type: number
+          format: float
+        positionZ:
+          type: number
+          format: float
+        exteriorVirtualWorld:
+          type: integer
+        exterior:
+          type: integer
+        interiorPositionX:
+          type: number
+          format: float
+        interiorPositionY:
+          type: number
+          format: float
+        interiorPositionZ:
+          type: number
+          format: float
+        interior:
+          type: integer
+        isLocked:
+          type: boolean
+
+    PropertyType:
+      type: string
+      enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
 
     ApiError:
       description: |
