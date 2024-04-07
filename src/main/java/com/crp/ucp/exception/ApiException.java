@@ -3,6 +3,7 @@ package com.crp.ucp.exception;
 import com.crp.ucp.account.authentication.BadCredentialsException;
 import com.crp.ucp.account.exception.AccountNotFoundException;
 import com.crp.ucp.server.model.ApiError;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -55,5 +56,15 @@ public class ApiException {
         error.setMessage(format("Failed to convert value: %s", exception.getValue()));
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<ApiError> handleJwtExpiredException(ExpiredJwtException exception) {
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.BAD_REQUEST.toString());
+        error.setReason(exception.getLocalizedMessage());
+        error.setMessage(format("ExpiredJwtException: %s", exception.getMessage()));
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
     }
 }
