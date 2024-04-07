@@ -1,6 +1,7 @@
 package com.crp.ucp.account;
 
 import com.crp.ucp.character.CharacterEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class AccountEntity {
     @Column(nullable = false)
     private String password;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CharacterEntity> characters;
 

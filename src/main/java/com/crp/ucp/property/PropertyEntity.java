@@ -1,6 +1,7 @@
 package com.crp.ucp.property;
 
 import com.crp.ucp.character.CharacterEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

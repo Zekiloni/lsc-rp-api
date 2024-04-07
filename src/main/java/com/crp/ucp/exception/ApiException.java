@@ -7,8 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+
+import static java.lang.String.format;
 
 @ControllerAdvice
 public class ApiException {
@@ -39,6 +42,18 @@ public class ApiException {
         error.setStatus(HttpStatus.BAD_REQUEST.toString());
         error.setMessage(exception.getLocalizedMessage());
 
-        return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ApiError> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException exception) {
+
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.BAD_REQUEST.toString());
+        error.setReason(exception.getLocalizedMessage());
+        error.setMessage(format("Failed to convert value: %s", exception.getValue()));
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 }

@@ -338,8 +338,7 @@ paths:
           in: query
           description: Filter by property type
           schema:
-            type: string
-            enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
+            $ref: '#/components/schemas/PropertyType'
       responses:
         '200':
           description: Successful response
@@ -534,7 +533,11 @@ components:
         vehicles:
           type: array
           items:
-           $ref: '#/components/schemas/Vehicle'
+            $ref: '#/components/schemas/Vehicle'
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
         factionId:
           type: integer
         rankId:
@@ -613,7 +616,7 @@ components:
 
     CharacterGender:
       type: string
-      enum: [MALE, FEMALE]
+      enum: [ MALE, FEMALE ]
 
     CharacterUpdate:
       type: object
@@ -798,7 +801,7 @@ components:
           format: int32
         type:
           type: string
-          enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
+          enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
         name:
           type: string
           maxLength: 128
@@ -887,7 +890,7 @@ components:
 
     PropertyType:
       type: string
-      enum: [HOUSE, BUSINESS, APARTMENT, WAREHOUSE]
+      enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
 
     ApiError:
       description: |

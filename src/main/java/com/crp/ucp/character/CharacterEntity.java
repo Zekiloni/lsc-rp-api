@@ -1,9 +1,12 @@
 package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountEntity;
+import com.crp.ucp.property.PropertyEntity;
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterGender;
 import com.crp.ucp.vehicle.VehicleEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +32,7 @@ public class CharacterEntity {
     @Column(name = "name", unique = true)
     private String name;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "account_id")
     private AccountEntity account;
@@ -108,4 +112,7 @@ public class CharacterEntity {
 
     @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<VehicleEntity> vehicles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<PropertyEntity> properties = new ArrayList<>();
 }
