@@ -2,11 +2,9 @@ package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.property.PropertyEntity;
-import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterGender;
 import com.crp.ucp.vehicle.VehicleEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
