@@ -81,14 +81,15 @@ public class PropertyEntity {
     @Column(name = "is_locked", nullable = false)
     private Boolean isLocked = false;
 
+    @Getter
+    @RequiredArgsConstructor
     public enum PropertyType {
         HOUSE("HOUSE"),
         BUSINESS("BUSINESS"),
         APARTMENT("APARTMENT"),
         WAREHOUSE("WAREHOUSE");
 
-        PropertyType(String value) {
-        }
+        private final String value;
     }
 
 }
