@@ -1,7 +1,7 @@
 package com.crp.ucp.exception;
 
 import com.crp.ucp.account.authentication.BadCredentialsException;
-import com.crp.ucp.account.exception.AccountNotFoundException;
+import com.crp.ucp.account.AccountException;
 import com.crp.ucp.server.model.ApiError;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
@@ -15,10 +15,10 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import static java.lang.String.format;
 
 @ControllerAdvice
-public class ApiException {
+public class ApiExceptionHandler {
 
-    @ExceptionHandler(AccountNotFoundException.class)
-    public ResponseEntity<ApiError> handleAccountNotFound(AccountNotFoundException exception) {
+    @ExceptionHandler(AccountException.class)
+    public ResponseEntity<ApiError> handleAccountNotFound(AccountException exception) {
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.NOT_FOUND.toString());
         error.setMessage(exception.getMessage());

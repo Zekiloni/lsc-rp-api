@@ -1,6 +1,6 @@
 package com.crp.ucp.character;
 
-import com.crp.ucp.account.exception.AccountNotFoundException;
+import com.crp.ucp.account.AccountException;
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterCreate;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +38,7 @@ public class CharacterApi implements com.crp.ucp.server.api.CharacterApi {
     @Override
     public ResponseEntity<Character> retrieveCharacter(Long id) {
         Character character = characterMapper.mapTo(characterService.getCharacterById(id)
-                .orElseThrow(() -> new AccountNotFoundException(format("Character with ID {0} not found", id))));
+                .orElseThrow(() -> new AccountException(format("Character with ID {0} not found", id))));
         return ResponseEntity.ok(character);
     }
 }

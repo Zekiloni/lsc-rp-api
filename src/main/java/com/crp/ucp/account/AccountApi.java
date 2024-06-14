@@ -1,6 +1,5 @@
 package com.crp.ucp.account;
 
-import com.crp.ucp.account.exception.AccountNotFoundException;
 import com.crp.ucp.server.model.Account;
 import com.crp.ucp.server.model.AccountCreate;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +33,7 @@ public class AccountApi implements com.crp.ucp.server.api.AccountApi {
     @Override
     public ResponseEntity<Account> retrieveAccount(Long accountId) {
         Account account = accountMapper.mapTo(accountService.getAccountById(accountId)
-                .orElseThrow(() -> new AccountNotFoundException(format("Account with ID {0} not found", accountId))));
+                .orElseThrow(() -> new AccountException(format("Account with ID {0} not found", accountId))));
         return ResponseEntity.ok(account);
     }
 
