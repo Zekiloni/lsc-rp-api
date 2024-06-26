@@ -17,6 +17,10 @@ public class BanService {
         return banRepository.save(ban);
     }
 
+    public List<BanEntity> getAllBans() {
+        return banRepository.findAll();
+    }
+
     public List<BanEntity> getBansByAccountId(Long accountId) {
         return banRepository.getBansByAccountId(accountId);
     }
