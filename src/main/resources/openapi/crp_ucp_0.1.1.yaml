@@ -327,6 +327,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vehicle'
+
+  /ban:
+    get:
+      operationId: listBans
+      tags:
+        - banApi
+      summary: Retrieve a list of bans
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ban'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /ban/{accountId}:
+    get:
+      operationId: listAccountBans
+      tags:
+        - banApi
+      summary: Retrieve a list of bans of specific account
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The ID of the account to retrieve bans for
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ban'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /property:
     get:
       operationId: listProperties
@@ -887,11 +930,55 @@ components:
           type: integer
         isLocked:
           type: boolean
-
     PropertyType:
       type: string
       enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
-
+    Ban:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        account:
+          $ref: '#/components/schemas/Account'
+        reason:
+          type: string
+        adminAccount:
+          $ref: '#/components/schemas/Account'
+        ipAddress:
+          type: string
+        expiringAt:
+          type: string
+          format: date
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - account
+        - ipAddress
+        - expiringAt
+        - reason
+        - createdAt
+    BanCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        account:
+          $ref: '#/components/schemas/Account'
+        reason:
+          type: string
+        adminAccount:
+          $ref: '#/components/schemas/Account'
+        ipAddress:
+          type: string
+        expiringAt:
+          type: string
+          format: date
+      required:
+        - account
+        - reason
     ApiError:
       description: |
         Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)
@@ -919,3 +1006,16 @@ components:
         '@type':
           type: string
           description: When sub-classing, this defines the sub-class entity name.
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    NotFoundError:
+      description: Not Found Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
