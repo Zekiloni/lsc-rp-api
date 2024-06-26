@@ -1,36 +1,45 @@
-package com.crp.ucp.account.authentication;
+package com.crp.ucp.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.function.Function;
 
 @Service
 public class JwtService {
 
-    @Value("${jwt.secret-key}")
-    private  String SECRET_KEY;
-
     private static final int EXPIRING_HOURS = 3;
+    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    public static final String ACCOUNT_ID = "accountId";
+    public static final String ACCESS_ROLE = "accessRole";
 
-    public String generateToken(String username) {
-        LocalDateTime expiringAt = LocalDateTime.now().plusHours(EXPIRING_HOURS);
+    public String generateToken(String username, Long accountId, RoleType role) {
+        HashMap<String, Object> claims = new HashMap<>() {{
+            put(ACCOUNT_ID, accountId);
+            put(ACCESS_ROLE, role);
+        }};
 
         return Jwts
                 .builder()
                 .subject(username)
+                .claims(claims)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(Date.from(expiringAt.atZone(ZoneId.systemDefault()).toInstant()))
+                .expiration(getExpirationDate(LocalDateTime.now().plusHours(EXPIRING_HOURS)))
                 .signWith(getSignInKey())
                 .compact();
+    }
+
+    private Date getExpirationDate(LocalDateTime expiringAt) {
+        return Date.from(expiringAt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
     public boolean isTokenValid(String token, String username) {
@@ -44,6 +53,10 @@ public class JwtService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    public Long extractAccountId(String token) {
+        return extractClaim(token, claims -> claims.get(ACCOUNT_ID, Long.class));
     }
 
     private Date extractExpiration(String token) {
@@ -65,7 +78,7 @@ public class JwtService {
     }
 
     private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64URL.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64URL.decode(SECRET_KEY.toString());
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
