@@ -33,7 +33,7 @@ public class BanEntity {
     @Column(name = "reason", nullable = false, length = 128)
     private String reason;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "admin_account_id")
     private AccountEntity adminAccount;
@@ -47,4 +47,8 @@ public class BanEntity {
 
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
+
+    public boolean isExpired() {
+        return expiringAt.isBefore(LocalDate.now());
+    }
 }
