@@ -358,7 +358,7 @@ paths:
           description: The ID of the account to retrieve bans for
           schema:
             type: integer
-            format: int32
+            format: int64
       responses:
         '200':
           description: Successful response
@@ -940,11 +940,11 @@ components:
           type: integer
           format: int32
         account:
-          $ref: '#/components/schemas/Account'
+          type: string
         reason:
           type: string
         adminAccount:
-          $ref: '#/components/schemas/Account'
+          type: string
         ipAddress:
           type: string
         expiringAt:
