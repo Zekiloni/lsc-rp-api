@@ -59,7 +59,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '200':
           description: OK
@@ -83,7 +83,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       requestBody:
         required: true
         content:
@@ -111,7 +111,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '204':
           description: No Content
@@ -164,7 +164,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '200':
           description: OK
@@ -183,7 +183,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       requestBody:
         required: true
         content:
@@ -208,7 +208,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '204':
           description: No Content
@@ -293,7 +293,7 @@ paths:
           description: ID of the vehicle to retrieve
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '200':
           description: Vehicle details
@@ -313,7 +313,7 @@ paths:
           description: ID of the vehicle to update
           schema:
             type: integer
-            format: int64
+            format: int32
       requestBody:
         required: true
         content:
@@ -358,7 +358,7 @@ paths:
           description: The ID of the account to retrieve bans for
           schema:
             type: integer
-            format: int64
+            format: int32
       responses:
         '200':
           description: Successful response
@@ -368,6 +368,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Ban'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /kick/{accountId}:
+    get:
+      operationId: listAccountKicks
+      tags:
+        - kickApi
+      summary: Retrieve a list of kicks of specific account
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The ID of the account to retrieve kicks for
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Kick'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /property:
@@ -467,7 +492,7 @@ components:
       properties:
         id:
           type: integer
-          format: int64
+          format: int32
         username:
           type: string
         email:
@@ -529,7 +554,7 @@ components:
       properties:
         id:
           type: integer
-          format: int64
+          format: int32
         name:
           type: string
         birthday:
@@ -641,7 +666,7 @@ components:
       properties:
         accountId:
           type: integer
-          format: int64
+          format: int32
         name:
           type: string
         birthday:
@@ -702,7 +727,7 @@ components:
       properties:
         id:
           type: integer
-          format: int64
+          format: int32
         model:
           type: integer
           description: Model ID of the vehicle
@@ -710,7 +735,7 @@ components:
           $ref: '#/components/schemas/Character'
         price:
           type: integer
-          format: int64
+          format: int32
         health:
           type: number
         numberplate:
@@ -933,6 +958,25 @@ components:
     PropertyType:
       type: string
       enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
+    Kick:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        account:
+          type: string
+        reason:
+          type: string
+        adminAccount:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - account
+        - reason
+        - createdAt
     Ban:
       type: object
       properties:
