@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PropertyRepository extends JpaRepository<PropertyEntity, Long> {
+public interface PropertyRepository extends JpaRepository<PropertyEntity, Integer> {
 
     List<PropertyEntity> findAllByType(PropertyEntity.PropertyType type);
 }
