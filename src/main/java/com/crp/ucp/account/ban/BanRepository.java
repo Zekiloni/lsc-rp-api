@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BanRepository extends JpaRepository<BanEntity, Long> {
+public interface BanRepository extends JpaRepository<BanEntity, Integer> {
 
-    List<BanEntity> getBansByAccountId(Long accountId);
+    List<BanEntity> getBansByAccountId(Integer accountId);
 }

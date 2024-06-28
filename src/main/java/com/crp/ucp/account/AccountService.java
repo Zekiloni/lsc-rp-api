@@ -18,7 +18,7 @@ public class AccountService {
         return this.accountRepository.findAll();
     }
 
-    public Optional<AccountEntity> getAccountById(Long id) {
+    public Optional<AccountEntity> getAccountById(Integer id) {
         return this.accountRepository.findById(id);
     }
 

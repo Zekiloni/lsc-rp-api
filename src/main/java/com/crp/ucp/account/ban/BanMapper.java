@@ -1,6 +1,5 @@
 package com.crp.ucp.account.ban;
 
-import com.crp.ucp.account.AccountMapper;
 import com.crp.ucp.server.model.Ban;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -8,7 +7,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(uses = {AccountMapper.class}, componentModel = "spring")
+@Mapper
 public interface BanMapper {
 
     @Mappings({

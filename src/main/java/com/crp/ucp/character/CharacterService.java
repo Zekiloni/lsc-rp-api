@@ -25,7 +25,7 @@ public class CharacterService {
         return this.characterRepository.findAll();
     }
 
-    public Optional<CharacterEntity> getCharacterById(Long id) {
+    public Optional<CharacterEntity> getCharacterById(Integer id) {
         return this.characterRepository.findById(id);
     }
 
@@ -34,9 +34,9 @@ public class CharacterService {
         return this.characterRepository.findByName(username);
     }
 
-    public CharacterEntity createCharacter(CharacterEntity character, Long accountId) {
+    public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
         AccountEntity account = accountService.getAccountById(accountId)
-                .orElseThrow(() -> new NoSuchElementException(format("Account with ID {} does not exist", accountId)));
+                .orElseThrow(() -> new NoSuchElementException(format("Account with ID {0} does not exist", accountId)));
 
         character.setAccount(account);
         character.setMaskId(UUID.randomUUID().toString().substring(0, 6));

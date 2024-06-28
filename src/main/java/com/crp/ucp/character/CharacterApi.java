@@ -36,7 +36,7 @@ public class CharacterApi implements com.crp.ucp.server.api.CharacterApi {
     }
 
     @Override
-    public ResponseEntity<Character> retrieveCharacter(Long id) {
+    public ResponseEntity<Character> retrieveCharacter(Integer id) {
         Character character = characterMapper.mapTo(characterService.getCharacterById(id)
                 .orElseThrow(() -> new AccountException(format("Character with ID {0} not found", id))));
         return ResponseEntity.ok(character);

@@ -16,7 +16,7 @@ public class BanController implements BanApi {
     private final BanMapper banMapper;
 
     @Override
-    public ResponseEntity<List<Ban>> listAccountBans(Long accountId) {
+    public ResponseEntity<List<Ban>> listAccountBans(Integer accountId) {
         return ResponseEntity.ok(banMapper.mapTo(banService.getBansByAccountId(accountId)));
     }
 

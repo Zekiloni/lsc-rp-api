@@ -21,7 +21,7 @@ public class BanService {
         return banRepository.findAll();
     }
 
-    public List<BanEntity> getBansByAccountId(Long accountId) {
+    public List<BanEntity> getBansByAccountId(Integer accountId) {
         return banRepository.getBansByAccountId(accountId);
     }
 }
