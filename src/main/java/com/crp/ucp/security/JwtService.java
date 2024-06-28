@@ -26,7 +26,7 @@ public class JwtService {
     public static final String ACCOUNT_ID = "accountId";
     public static final String ACCESS_ROLE = "accessRole";
 
-    public String generateToken(String username, Long accountId, RoleType role) {
+    public String generateToken(String username, Integer accountId, RoleType role) {
         HashMap<String, Object> claims = new HashMap<>() {{
             put(ACCOUNT_ID, accountId);
             put(ACCESS_ROLE, role);
@@ -59,8 +59,8 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-    public Long extractAccountId(String token) {
-        return extractClaim(token, claims -> claims.get(ACCOUNT_ID, Long.class));
+    public Integer extractAccountId(String token) {
+        return extractClaim(token, claims -> claims.get(ACCOUNT_ID, Integer.class));
     }
 
     private Date extractExpiration(String token) {
