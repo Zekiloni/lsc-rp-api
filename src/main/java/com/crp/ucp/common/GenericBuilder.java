@@ -1,4 +1,4 @@
-package com.crp.ucp.util;
+package com.crp.ucp.common;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
