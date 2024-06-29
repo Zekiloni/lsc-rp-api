@@ -145,7 +145,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>
-                                ${project.basedir}/src/main/resources/openapi/crp_ucp_0.1.1.yaml
+                                ${project.basedir}/src/main/resources/openapi/lscrp_oas_0.2.5.yaml
                             </inputSpec>
                             <generatorName>spring</generatorName>
                             <apiPackage>com.crp.ucp.server.api</apiPackage>
