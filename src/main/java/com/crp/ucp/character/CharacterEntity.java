@@ -80,11 +80,14 @@ public class CharacterEntity {
     @Column(name = "virtual_world")
     private Integer virtualWorld;
 
+    @Column(name = "interior")
     private Integer interior;
 
-    // private Integer factionId;
+    @Column(name = "faction_id")
+    private Integer factionId;
 
-    // private Integer rankId;
+    @Column(name = "rank_name")
+    private String rankName;
 
     private Integer job;
 
