@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.NoSuchElementException;
 
 import static java.lang.String.format;
 
@@ -19,6 +20,15 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(AccountException.class)
     public ResponseEntity<ApiError> handleAccountNotFound(AccountException exception) {
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.NOT_FOUND.toString());
+        error.setMessage(exception.getMessage());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<ApiError> handleAccountNotFound(NoSuchElementException exception) {
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.NOT_FOUND.toString());
         error.setMessage(exception.getMessage());
