@@ -13,7 +13,7 @@ import static java.text.MessageFormat.format;
 
 @RestController
 @RequiredArgsConstructor
-public class AccountApi implements com.crp.ucp.server.api.AccountApi {
+public class AccountController implements com.crp.ucp.server.api.AccountApi {
 
     private final AccountService accountService;
 
