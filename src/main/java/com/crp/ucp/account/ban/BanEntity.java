@@ -9,7 +9,6 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
@@ -48,7 +47,7 @@ public class BanEntity {
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 
-    public boolean isExpired() {
-        return expiringAt.isBefore(LocalDate.now());
+    public boolean getIsExpired() {
+        return expiringAt != null && expiringAt.isBefore(LocalDate.now());
     }
 }
