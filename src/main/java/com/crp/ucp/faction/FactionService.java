@@ -6,12 +6,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class FactionService {
 
+    private final FactionRepository factionRepository;
     private final CharacterService characterService;
+
+    public Optional<FactionEntity> getFactionById(Integer factionId) {
+        return factionRepository.findById(factionId);
+    }
 
     public List<FactionMemberProjection> getFactionMembers(FactionEntity faction) {
         return getFactionMembers(faction.getId());
