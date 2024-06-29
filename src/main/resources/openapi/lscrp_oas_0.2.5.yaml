@@ -327,7 +327,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vehicle'
-
   /ban:
     get:
       operationId: listBans
@@ -506,6 +505,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Property'
+  /faction/{id}:
+    get:
+      operationId: retrieveFaction
+      tags:
+        - factionApi
+      summary: Retrieve a faction by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the faction to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Faction'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /faction/{id}/members:
+    get:
+      operationId: listFactionMembers
+      tags:
+        - factionApi
+      summary: List a faction members by faction ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the faction to list members
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FactionMember'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     bearerAuth:
@@ -1071,10 +1122,77 @@ components:
       required:
         - account
         - reason
+    Faction:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          description: The unique identifier of the faction.
+        name:
+          type: string
+          maxLength: 64
+          description: The name of the faction.
+        shortName:
+          type: string
+          maxLength: 64
+          description: The short name of the faction.
+        type:
+          type: integer
+          format: int32
+          description: The type of the faction.
+        positionX:
+          type: number
+          format: float
+          description: The X coordinate of the faction's position.
+        positionY:
+          type: number
+          format: float
+          description: The Y coordinate of the faction's position.
+        positionZ:
+          type: number
+          format: float
+          description: The Z coordinate of the faction's position.
+        virtualWorld:
+          type: integer
+          format: int32
+          description: The virtual world identifier of the faction.
+        interior:
+          type: integer
+          format: int32
+          description: The interior identifier of the faction.
+        budget:
+          type: integer
+          format: int32
+          description: The budget of the faction.
+      required:
+        - id
+        - name
+        - shortName
+        - type
+        - positionX
+        - positionY
+        - positionZ
+        - virtualWorld
+        - interior
+        - budget
+    FactionMember:
+      type: object
+      properties:
+        characterId:
+          type: integer
+          format: int32
+        characterName:
+          type: string
+        rankName:
+          type: string
+      required:
+        - characterId
+        - characterName
     ApiError:
+      type: object
       description: |
         Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)
-      type: object
       required:
         - code
         - reason
