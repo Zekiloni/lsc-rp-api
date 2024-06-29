@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class AuthenticationApi implements com.crp.ucp.server.api.AuthenticationApi {
+public class AuthenticationController implements com.crp.ucp.server.api.AuthenticationApi {
 
     private final AuthenticationService authenticationService;
 

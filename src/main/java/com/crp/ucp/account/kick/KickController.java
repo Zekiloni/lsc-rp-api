@@ -1,6 +1,5 @@
 package com.crp.ucp.account.kick;
 
-import com.crp.ucp.server.api.KickApi;
 import com.crp.ucp.server.model.Kick;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class KickController implements KickApi {
+public class KickController implements com.crp.ucp.server.api.KickApi {
 
     private final KickService kickService;
     private final KickMapper kickMapper;

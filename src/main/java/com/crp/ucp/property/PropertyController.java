@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class PropertyApi implements com.crp.ucp.server.api.PropertyApi {
+public class PropertyController implements com.crp.ucp.server.api.PropertyApi {
 
     private final PropertyService propertyService;
 
