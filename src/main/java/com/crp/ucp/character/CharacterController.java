@@ -16,7 +16,7 @@ import static java.text.MessageFormat.format;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class CharacterApi implements com.crp.ucp.server.api.CharacterApi {
+public class CharacterController implements com.crp.ucp.server.api.CharacterApi {
 
     private final CharacterService characterService;
 
