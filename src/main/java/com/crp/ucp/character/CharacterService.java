@@ -22,16 +22,19 @@ public class CharacterService {
     private final AccountService accountService;
 
     public List<CharacterEntity> getAllCharacter() {
-        return this.characterRepository.findAll();
+        return characterRepository.findAll();
     }
 
     public Optional<CharacterEntity> getCharacterById(Integer id) {
-        return this.characterRepository.findById(id);
+        return characterRepository.findById(id);
     }
 
-
     public Optional<CharacterEntity> getCharacterByName(String username) {
-        return this.characterRepository.findByName(username);
+        return characterRepository.findByName(username);
+    }
+
+    public List<CharacterEntity> getCharactersByFactionId(Integer factionId) {
+        return characterRepository.findByFactionId(factionId);
     }
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
