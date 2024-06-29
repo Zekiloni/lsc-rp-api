@@ -395,6 +395,31 @@ paths:
                   $ref: '#/components/schemas/Kick'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /warn/{accountId}:
+    get:
+      operationId: listAccountWarns
+      tags:
+        - warnApi
+      summary: Retrieve a list of warns of specific account
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The ID of the account to retrieve warns for
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Warn'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /property:
     get:
       operationId: listProperties
@@ -977,6 +1002,25 @@ components:
         - account
         - reason
         - createdAt
+    Warn:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        account:
+          type: string
+        reason:
+          type: string
+        adminAccount:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - account
+        - reason
+        - createdAt
     Ban:
       type: object
       properties:
@@ -994,15 +1038,19 @@ components:
         expiringAt:
           type: string
           format: date
+        isExpired:
+          type: boolean
         createdAt:
           type: string
           format: date-time
       required:
+        - id
         - account
         - ipAddress
         - expiringAt
         - reason
         - createdAt
+        - isExpired
     BanCreate:
       type: object
       properties:
