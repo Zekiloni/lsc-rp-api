@@ -12,7 +12,8 @@ public interface BanMapper {
 
     @Mappings({
             @Mapping(source = "account.username", target = "account"),
-            @Mapping(source = "adminAccount.username", target = "adminAccount")
+            @Mapping(source = "adminAccount.username", target = "adminAccount"),
+            @Mapping(expression = "java(ban.getIsExpired())", target = "isExpired")
     })
     Ban mapTo(BanEntity ban);
 
