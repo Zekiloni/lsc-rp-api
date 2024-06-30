@@ -10,5 +10,9 @@ import lombok.*;
 public class FactionMemberProjection {
     private Integer characterId;
     private String characterName;
+    private Integer characterSkin;
+    private String accountUsername;
     private String rankName;
+    private Boolean isLeader;
+    private double averageActivity;
 }
