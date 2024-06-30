@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(uses = {VehicleMapper.class, PropertyMapper.class}, componentModel = "spring")
+@Mapper(uses = {VehicleMapper.class, PropertyMapper.class})
 public interface CharacterMapper {
 
     Character mapTo(CharacterEntity character);
@@ -18,4 +18,12 @@ public interface CharacterMapper {
     CharacterEntity mapTo(Character character);
 
     List<Character> mapTo(List<CharacterEntity> characters);
+
+    default Boolean mapTo(Integer i) {
+        return i == 1;
+    }
+
+    default Integer mapTo(Boolean value) {
+        return value ? 1 : 0;
+    }
 }
