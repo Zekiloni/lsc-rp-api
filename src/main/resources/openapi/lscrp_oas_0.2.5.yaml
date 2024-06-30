@@ -595,8 +595,8 @@ components:
         - username
         - email
         - admin
+        - characters
         - createdAt
-
     AccountCreate:
       type: object
       properties:
@@ -708,6 +708,7 @@ components:
           type: string
           format: date-time
       required:
+        - id
         - accountId
         - name
         - birthday
@@ -736,6 +737,7 @@ components:
         - walkingStyle
         - fightingStyle
         - createdAt
+        - factionId
 
     CharacterCreate:
       type: object
@@ -1179,16 +1181,29 @@ components:
     FactionMember:
       type: object
       properties:
+        accountUsername:
+          type: string
         characterId:
           type: integer
           format: int32
         characterName:
           type: string
+        characterSkin:
+          type: integer
+          format: int32
         rankName:
           type: string
+        isLeader:
+          type: boolean
+        averageActivity:
+          type: number
+          format: double
       required:
+        - accountUsername
         - characterId
         - characterName
+        - characterSkin
+        - isLeader
     ApiError:
       type: object
       description: |
