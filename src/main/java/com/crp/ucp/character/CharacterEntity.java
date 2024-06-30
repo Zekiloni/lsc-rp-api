@@ -36,7 +36,7 @@ public class CharacterEntity {
     private AccountEntity account;
 
     @Column(name = "is_leader")
-    private Boolean isLeader;
+    private Integer isLeader;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")
