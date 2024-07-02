@@ -505,14 +505,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Property'
-  /faction/{id}:
+  /faction/{characterId}/kick:
+    post:
+      operationId: kickFactionMember
+      tags:
+        - factionApi
+      summary: Kick a faction member by character ID
+      parameters:
+        - name: characterId
+          in: path
+          description: ID of the character to kick
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /faction/{characterId}/rank:
+    post:
+      operationId: patchFactionMemberRank
+      tags:
+        - factionApi
+      summary: Update a faction member rank by character ID
+      parameters:
+        - name: characterId
+          in: path
+          description: ID of the character to update rank
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberRankUpdate'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FactionMember'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /faction/{factionId}:
     get:
       operationId: retrieveFaction
       tags:
         - factionApi
       summary: Retrieve a faction by ID
       parameters:
-        - name: id
+        - name: factionId
           in: path
           description: ID of the faction to retrieve
           required: true
@@ -1204,6 +1259,21 @@ components:
         - characterName
         - characterSkin
         - isLeader
+    MemberRankUpdate:
+      type: object
+      properties:
+        rankName:
+          type: string
+      required:
+        - rankName
+    MessageResponse:
+      type: object
+      description: Generic message response
+      properties:
+        message:
+          type: string
+      required:
+        - message
     ApiError:
       type: object
       description: |
@@ -1233,6 +1303,18 @@ components:
           description: When sub-classing, this defines the sub-class entity name.
   responses:
     InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    UnauthorizedError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    BadRequestError:
       description: Internal Server Error
       content:
         application/json:
