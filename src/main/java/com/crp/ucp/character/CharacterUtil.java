@@ -5,10 +5,18 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.NoSuchElementException;
+import java.util.function.Supplier;
+
+import static java.text.MessageFormat.format;
 
 @UtilityClass
 @Slf4j
 public class CharacterUtil {
+
+    public static Supplier<NoSuchElementException> throwCharacterNotFoundException(Integer characterId) {
+        return () -> new NoSuchElementException(format("Character with ID {0} not found", characterId));
+    }
 
     public static double getCharacterDailyAverageActivity(CharacterEntity member) {
         long totalDaysRegistered = ChronoUnit.DAYS.between(member.getCreatedAt(), OffsetDateTime.now());
