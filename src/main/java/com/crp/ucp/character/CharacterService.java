@@ -70,4 +70,8 @@ public class CharacterService {
 
         return character;
     }
+
+    public CharacterEntity updateCharacter(CharacterEntity character) {
+        return characterRepository.save(character);
+    }
 }
