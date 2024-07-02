@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.crp.ucp.character.CharacterUtil.getCharacterDailyAverageActivity;
+import static com.crp.ucp.character.CharacterUtil.throwCharacterNotFoundException;
+import static com.crp.ucp.faction.FactionUtil.NO_FACTION_ID;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +27,25 @@ public class FactionService {
 
     public List<FactionMemberProjection> getFactionMembers(FactionEntity faction) {
         return getFactionMembers(faction.getId());
+    }
+
+    public void kickFactionMember(Integer characterId) {
+        CharacterEntity character = characterService.getCharacterById(characterId)
+                .orElseThrow(throwCharacterNotFoundException(characterId));
+
+        character.setFactionId(NO_FACTION_ID);
+        character.setRankName(null);
+        character.setIsLeader(0);
+        characterService.updateCharacter(character);
+    }
+
+    public FactionMemberProjection updateFactionMemberRank(Integer characterId, String rankName) {
+        CharacterEntity character = characterService.getCharacterById(characterId)
+                .orElseThrow(throwCharacterNotFoundException(characterId));
+
+        character.setRankName(rankName);
+
+        return mapTo(characterService.updateCharacter(character));
     }
 
     public List<FactionMemberProjection> getFactionMembers(Integer factionId) {
