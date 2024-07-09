@@ -612,12 +612,111 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /quiz:
+    get:
+      operationId: retrieveQuiz
+      tags:
+        - quizApi
+      summary: Generate a random quiz
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Question'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      operationId: submitQuiz
+      tags:
+        - quizApi
+      summary: Submit a quiz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuizSubmit'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizResult'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
   schemas:
+    Question:
+      type: object
+      properties:
+        id:
+          type: string
+        question:
+          type: string
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionAnswer'
+      required:
+        - id
+        - question
+        - answers
+    QuestionAnswer:
+      type: object
+      properties:
+        id:
+          type: string
+        answer:
+          type: string
+      required:
+        - id
+        - answer
+    QuizSubmit:
+      type: object
+      properties:
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionAnswerSubmit'
+      required:
+        - answers
+    QuestionAnswerSubmit:
+      type: object
+      properties:
+        questionId:
+          type: string
+        answerId:
+          type: string
+      required:
+        - questionId
+        - answerId
+    QuizResult:
+      type: object
+      properties:
+        failed:
+          type: boolean
+        maxFailedAnswers:
+          type: integer
+        wrongAnswers:
+          type: array
+          items:
+            type: string
+      required:
+        - failed
+        - maxFailedAnswers
+        - wrongAnswers
     Account:
       type: object
       properties:
