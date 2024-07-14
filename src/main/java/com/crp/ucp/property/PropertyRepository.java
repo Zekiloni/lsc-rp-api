@@ -9,4 +9,6 @@ import java.util.List;
 public interface PropertyRepository extends JpaRepository<PropertyEntity, Integer> {
 
     List<PropertyEntity> findAllByType(PropertyEntity.PropertyType type);
+
+    List<PropertyEntity> findAllByOwnerId(Integer ownerId);
 }
