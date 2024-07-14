@@ -29,7 +29,7 @@ public class AuthenticationService {
 
     public AuthenticationStatus handle(Authentication auth) {
         AccountEntity account = this.accountService.getAccountByUsername(auth.getUsername())
-                .orElseThrow(() -> new AccountException(format("Account with username {0} does not exist", auth.getUsername())));
+                .orElseThrow(() -> new AccountException(format("Korisničko ime {0} nije pronađeno", auth.getUsername())));
 
         boolean isAuthenticated = BCrypt.checkpw(auth.getPassword(), account.getPassword());
 
