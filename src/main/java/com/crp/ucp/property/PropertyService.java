@@ -1,6 +1,5 @@
 package com.crp.ucp.property;
 
-import com.crp.ucp.server.model.PropertyType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +18,9 @@ public class PropertyService {
         } else {
             return propertyRepository.findAll();
         }
+    }
+
+    public List<PropertyEntity> getAllPropertiesOwnedBy(Integer ownerId) {
+        return propertyRepository.findAllByOwnerId(ownerId);
     }
 }
