@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
-import static java.lang.String.format;
+import static com.crp.ucp.account.AccountUtil.throwAccountNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +42,7 @@ public class CharacterService {
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
         AccountEntity account = accountService.getAccountById(accountId)
-                .orElseThrow(() -> new NoSuchElementException(format("Račun sa ID-om {0} ne postoji", accountId)));
+                .orElseThrow(() -> throwAccountNotFoundException(accountId));
 
         character.setAccount(account);
         character.setMaskId(UUID.randomUUID().toString().substring(0, 6));
