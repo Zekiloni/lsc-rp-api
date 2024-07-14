@@ -26,6 +26,10 @@ public class AccountService {
         return this.accountRepository.findByEmail(email);
     }
 
+    public List<AccountEntity> getByUsernameOrEmail(String username, String email) {
+        return accountRepository.findByUsernameContainingOrEmailContaining(username, email);
+    }
+
     public Optional<AccountEntity> getAccountByUsername(String username) {
         return this.accountRepository.findByUsername(username);
     }
