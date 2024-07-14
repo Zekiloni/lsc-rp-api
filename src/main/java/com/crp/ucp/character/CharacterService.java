@@ -33,13 +33,17 @@ public class CharacterService {
         return characterRepository.findByName(username);
     }
 
+    public List<CharacterEntity> geByNameContaining(String name) {
+        return characterRepository.findByNameContaining(name);
+    }
+
     public List<CharacterEntity> getCharactersByFactionId(Integer factionId) {
         return characterRepository.findByFactionId(factionId);
     }
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
         AccountEntity account = accountService.getAccountById(accountId)
-                .orElseThrow(() -> new NoSuchElementException(format("Account with ID {0} does not exist", accountId)));
+                .orElseThrow(() -> new NoSuchElementException(format("Račun sa ID-om {0} ne postoji", accountId)));
 
         character.setAccount(account);
         character.setMaskId(UUID.randomUUID().toString().substring(0, 6));
