@@ -14,5 +14,6 @@ public class FactionMemberProjection {
     private String accountUsername;
     private String rankName;
     private Boolean isLeader;
+    private Boolean isInGame;
     private double averageActivity;
 }
