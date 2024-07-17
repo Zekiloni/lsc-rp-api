@@ -38,6 +38,9 @@ public class CharacterEntity {
     @Column(name = "is_leader")
     private Integer isLeader;
 
+    @Column(name = "is_in_game")
+    private Integer isInGame;
+
     @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")
     private CharacterGender gender;
