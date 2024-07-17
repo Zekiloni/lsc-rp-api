@@ -39,8 +39,8 @@ public class FactionController implements FactionApi {
 
     @Override
     public ResponseEntity<MessageResponse> kickFactionMember(Integer characterId) {
-        factionService.kickFactionMember(characterId);
-        return ResponseEntity.ok(new MessageResponse(format(KICK_MEMBER_RESPONSE, characterId)));
+        String characterName = factionService.kickFactionMember(characterId).getCharacterName();
+        return ResponseEntity.ok(new MessageResponse(format(KICK_MEMBER_RESPONSE, characterName)));
     }
 
     @Override
