@@ -545,6 +545,7 @@ paths:
             type: integer
             format: int32
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -1349,6 +1350,8 @@ components:
           type: string
         isLeader:
           type: boolean
+        isInGame:
+          type: boolean
         averageActivity:
           type: number
           format: double
@@ -1358,6 +1361,7 @@ components:
         - characterName
         - characterSkin
         - isLeader
+        - isInGame
     MemberRankUpdate:
       type: object
       properties:

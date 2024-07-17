@@ -29,14 +29,14 @@ public class FactionService {
         return getFactionMembers(faction.getId());
     }
 
-    public void kickFactionMember(Integer characterId) {
+    public FactionMemberProjection kickFactionMember(Integer characterId) {
         CharacterEntity character = characterService.getCharacterById(characterId)
                 .orElseThrow(throwCharacterNotFoundException(characterId));
 
         character.setFactionId(NO_FACTION_ID);
         character.setRankName(null);
         character.setIsLeader(0);
-        characterService.updateCharacter(character);
+        return mapTo(characterService.updateCharacter(character));
     }
 
     public FactionMemberProjection updateFactionMemberRank(Integer characterId, String rankName) {
@@ -49,22 +49,18 @@ public class FactionService {
     }
 
     public List<FactionMemberProjection> getFactionMembers(Integer factionId) {
-        return characterService.getCharactersByFactionId(factionId)
-                .stream()
-                .map(this::mapTo)
-                .toList();
+        return characterService.getCharactersByFactionId(factionId).stream().map(this::mapTo).toList();
     }
 
     private FactionMemberProjection mapTo(CharacterEntity member) {
-        log.info("{} is leader {}", member.getName(), member.getIsLeader());
-        return FactionMemberProjection
-                .builder()
+        return FactionMemberProjection.builder()
                 .accountUsername(member.getAccount().getUsername())
                 .characterId(member.getId())
                 .characterName(member.getName())
                 .characterSkin(member.getSkin())
                 .rankName(member.getRankName())
                 .isLeader(member.getIsLeader() == 1)
+                .isInGame(member.getIsInGame() == 1)
                 .averageActivity(getCharacterDailyAverageActivity(member))
                 .build();
     }
