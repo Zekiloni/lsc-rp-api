@@ -35,6 +35,12 @@ paths:
       tags:
         - accountApi
       summary: Get a list of all accounts
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       responses:
         '200':
           description: OK
@@ -53,6 +59,12 @@ paths:
       tags:
         - accountApi
       summary: Get an account by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: accountId
@@ -77,6 +89,12 @@ paths:
       tags:
         - accountApi
       summary: Update an account by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: accountId
@@ -105,6 +123,12 @@ paths:
       tags:
         - accountApi
       summary: Delete an account by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: accountId
@@ -121,10 +145,16 @@ paths:
           description: Internal Server Error
   /character:
     post:
-      summary: Create a new character
       operationId: createCharacter
       tags:
         - characterApi
+      summary: Create a new character
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       requestBody:
         required: true
         content:
@@ -143,6 +173,12 @@ paths:
       operationId: listCharacters
       tags:
         - characterApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       responses:
         '200':
           description: OK
@@ -158,6 +194,12 @@ paths:
       operationId: retrieveCharacter
       tags:
         - characterApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: id
@@ -177,6 +219,12 @@ paths:
       operationId: patchCharacter
       tags:
         - characterApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: id
@@ -202,6 +250,11 @@ paths:
       operationId: deleteCharacter
       tags:
         - characterApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - super_admin
       parameters:
         - in: path
           name: id
@@ -253,6 +306,12 @@ paths:
       operationId: listVehicles
       tags:
         - vehicleApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       responses:
         '200':
           description: List of vehicles
@@ -267,6 +326,10 @@ paths:
       operationId: createVehicle
       tags:
         - vehicleApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - super_admin
       requestBody:
         required: true
         content:
@@ -286,6 +349,12 @@ paths:
       operationId: retrieveVehicle
       tags:
         - vehicleApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: id
@@ -306,6 +375,12 @@ paths:
       operationId: patchVehicle
       tags:
         - vehicleApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - in: path
           name: id
@@ -333,6 +408,11 @@ paths:
       tags:
         - banApi
       summary: Retrieve a list of bans
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - admin
+        - super_admin
       responses:
         '200':
           description: Successful response
@@ -350,6 +430,12 @@ paths:
       tags:
         - banApi
       summary: Retrieve a list of bans of specific account
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: accountId
           in: path
@@ -375,6 +461,12 @@ paths:
       tags:
         - kickApi
       summary: Retrieve a list of kicks of specific account
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: accountId
           in: path
@@ -400,6 +492,12 @@ paths:
       tags:
         - warnApi
       summary: Retrieve a list of warns of specific account
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: accountId
           in: path
@@ -425,6 +523,12 @@ paths:
       tags:
         - propertyApi
       summary: Retrieve list of properties
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: type
           in: query
@@ -445,6 +549,10 @@ paths:
       tags:
         - propertyApi
       summary: Create a new property
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - super_admin
       requestBody:
         required: true
         content:
@@ -464,6 +572,12 @@ paths:
       tags:
         - propertyApi
       summary: Retrieve a property by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: id
           in: path
@@ -484,6 +598,11 @@ paths:
       tags:
         - propertyApi
       summary: Update a property by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - admin
+        - super_admin
       parameters:
         - name: id
           in: path
@@ -511,6 +630,11 @@ paths:
       tags:
         - factionApi
       summary: Kick a faction member by character ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - admin
+        - super_admin
       parameters:
         - name: characterId
           in: path
@@ -536,6 +660,11 @@ paths:
       tags:
         - factionApi
       summary: Update a faction member rank by character ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - admin
+        - super_admin
       parameters:
         - name: characterId
           in: path
@@ -567,6 +696,12 @@ paths:
       tags:
         - factionApi
       summary: Retrieve a faction by ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: factionId
           in: path
@@ -592,6 +727,12 @@ paths:
       tags:
         - factionApi
       summary: List a faction members by faction ID
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
       parameters:
         - name: id
           in: path
@@ -658,6 +799,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
   schemas:
     Question:
       type: object
@@ -1429,3 +1571,5 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ApiError'
+security:
+  - bearerAuth: [ ]
