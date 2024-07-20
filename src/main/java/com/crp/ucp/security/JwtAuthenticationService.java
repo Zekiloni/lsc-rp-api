@@ -1,8 +1,8 @@
 package com.crp.ucp.security;
 
+import com.crp.ucp.account.AccountEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,25 +16,24 @@ import java.util.HashMap;
 import java.util.function.Function;
 
 @Service
-public class JwtService {
+public class JwtAuthenticationService {
 
-    private static final int EXPIRING_HOURS = 3;
+    @Value("${security.jwt.expiration-hours}")
+    private Long EXPIRING_HOURS;
 
-    @Value("${jwt.secret-key}")
+    @Value("${security.jwt.secret-key}")
     private String SECRET_KEY;
 
     public static final String ACCOUNT_ID = "accountId";
-    public static final String ACCESS_ROLE = "accessRole";
 
-    public String generateToken(String username, Integer accountId, RoleType role) {
+    public String generateToken(AccountEntity account) {
         HashMap<String, Object> claims = new HashMap<>() {{
-            put(ACCOUNT_ID, accountId);
-            put(ACCESS_ROLE, role);
+            put(ACCOUNT_ID, account.getId());
         }};
 
         return Jwts
                 .builder()
-                .subject(username)
+                .subject(account.getUsername())
                 .claims(claims)
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(getExpirationDate(LocalDateTime.now().plusHours(EXPIRING_HOURS)))
@@ -82,7 +81,7 @@ public class JwtService {
     }
 
     private SecretKey getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64URL.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
