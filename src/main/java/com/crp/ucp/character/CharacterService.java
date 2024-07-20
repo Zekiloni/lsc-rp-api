@@ -54,6 +54,7 @@ public class CharacterService {
         character.setBank(0);
         character.setDrugAddiction(0);
         character.setHealth(100);
+        character.setIsInGame(0);
         character.setHours(0);
         character.setMinutes(0);
         character.setLevel(1);
