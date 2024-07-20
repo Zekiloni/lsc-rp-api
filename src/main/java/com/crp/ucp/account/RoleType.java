@@ -1,10 +1,10 @@
-package com.crp.ucp.security;
+package com.crp.ucp.account;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Getter
+@RequiredArgsConstructor
 public enum RoleType {
     USER_ROLE("user"),
     ADMIN_ROLE("admin"),
