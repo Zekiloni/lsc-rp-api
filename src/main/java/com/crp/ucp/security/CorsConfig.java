@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig {
 
-    @Value("${lscrp.allowed-origin}")
+    @Value("${security.allowed-origin}")
     private String lscrpAllowedOrigin;
 
     private final String devAllowedOrigin = "http://localhost:4200";
