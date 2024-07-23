@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(uses = {CharacterMapper.class}, componentModel = "spring")
+@Mapper(uses = {CharacterMapper.class})
 public interface AccountMapper {
 
     AccountEntity mapTo(AccountCreate accountCreate);
