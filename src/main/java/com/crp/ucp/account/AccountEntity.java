@@ -4,17 +4,25 @@ import com.crp.ucp.character.CharacterEntity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.OffsetDateTime;
+import java.util.Collection;
 import java.util.List;
+
+import static com.crp.ucp.security.SecurityUtil.createDefaultGrantedAuthority;
+import static com.crp.ucp.security.SecurityUtil.createSimpleGrantedAuthority;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "accounts")
-public class AccountEntity {
+public class AccountEntity implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,4 +57,38 @@ public class AccountEntity {
 
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<SimpleGrantedAuthority> grantedAuthorities = createDefaultGrantedAuthority();
+
+        if (admin > 0) {
+            grantedAuthorities.add(createSimpleGrantedAuthority(RoleType.ADMIN_ROLE));
+            if (this.admin > 5) {
+                grantedAuthorities.add(createSimpleGrantedAuthority(RoleType.SUPER_ADMIN));
+            }
+        }
+
+        return grantedAuthorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
