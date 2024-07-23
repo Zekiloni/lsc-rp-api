@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -32,8 +33,12 @@ public class CharacterService {
         return characterRepository.findByName(username);
     }
 
-    public List<CharacterEntity> geByNameContaining(String name) {
-        return characterRepository.findByNameContaining(name);
+    public List<CharacterEntity> getByNameOrAccountUsername(String username, String accountUsername) {
+        return characterRepository.findByNameContainingOrAccountUsernameContaining(username, accountUsername);
+    }
+
+    public List<CharacterEntity> getByNameAndAccountUsername(String username, String accountUsername) {
+        return characterRepository.findByNameContainingAndAccountUsernameContaining(username, accountUsername);
     }
 
     public List<CharacterEntity> getCharactersByFactionId(Integer factionId) {
@@ -69,10 +74,9 @@ public class CharacterService {
         character.setSavings(0);
         character.setPaycheck(0);
         character.setState(0);
+        character.setCreatedAt(OffsetDateTime.now());
 
-        characterRepository.save(character);
-
-        return character;
+        return  characterRepository.save(character);
     }
 
     public CharacterEntity updateCharacter(CharacterEntity character) {
