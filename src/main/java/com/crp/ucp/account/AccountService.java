@@ -1,16 +1,20 @@
 package com.crp.ucp.account;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class AccountService {
+public class AccountService implements UserDetailsService {
 
     private final AccountRepository accountRepository;
 
@@ -28,6 +32,10 @@ public class AccountService {
 
     public List<AccountEntity> getByUsernameOrEmail(String username, String email) {
         return accountRepository.findByUsernameContainingOrEmailContaining(username, email);
+    }
+
+    public List<AccountEntity> getByUsernameAndEmail(String username, String email) {
+        return accountRepository.findByUsernameContainingAndEmailContaining(username, email);
     }
 
     public Optional<AccountEntity> getAccountByUsername(String username) {
@@ -48,5 +56,11 @@ public class AccountService {
     private String hashPassword(String password) {
         String salt = BCrypt.gensalt();
         return BCrypt.hashpw(password, salt);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return getAccountByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }
