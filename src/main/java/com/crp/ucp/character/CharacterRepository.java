@@ -13,5 +13,7 @@ public interface CharacterRepository extends JpaRepository<CharacterEntity, Inte
 
     List<CharacterEntity> findByFactionId(Integer factionId);
 
-    List<CharacterEntity> findByNameContaining(String name);
+    List<CharacterEntity> findByNameContainingOrAccountUsernameContaining(String name, String accountUsername);
+
+    List<CharacterEntity> findByNameContainingAndAccountUsernameContaining(String name, String accountUsername);
 }
