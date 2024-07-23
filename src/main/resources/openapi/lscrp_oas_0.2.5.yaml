@@ -29,7 +29,6 @@ paths:
           description: Bad Request
         '500':
           description: Internal Server Error
-
     get:
       operationId: listAccount
       tags:
@@ -37,6 +36,19 @@ paths:
       summary: Get a list of all accounts
       security:
         - bearerAuth: [ ]
+      parameters:
+        - in: query
+          name: username
+          schema:
+            type: string
+          required: false
+          description: Filter accounts by username
+        - in: query
+          name: emailAddress
+          schema:
+            type: string
+          required: false
+          description: Filter accounts by email address
       x-roles-allowed:
         - user
         - admin
@@ -143,6 +155,36 @@ paths:
           description: Not Found
         '500':
           description: Internal Server Error
+  /account/{accountId}/logs/login:
+    get:
+      operationId: listAccountLoginLogs
+      tags:
+        - accountApi
+      summary: Get a list of all account login logs
+      parameters:
+        - in: path
+          name: accountId
+          required: true
+          schema:
+            type: integer
+            format: int32
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - user
+        - admin
+        - super_admin
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LoginLogAudit'
+        '500':
+          description: Internal Server Error
   /character:
     post:
       operationId: createCharacter
@@ -173,6 +215,19 @@ paths:
       operationId: listCharacters
       tags:
         - characterApi
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          required: false
+          description: Filter character by name
+        - in: query
+          name: accountUsername
+          schema:
+            type: string
+          required: false
+          description: Filter characters by account username
       security:
         - bearerAuth: [ ]
       x-roles-allowed:
@@ -794,6 +849,38 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /stats/online-players:
+    get:
+      operationId: listOnlinePlayersStat
+      tags:
+        - statApi
+      summary: Get a list of all online players count audit in date range
+      parameters:
+        - in: query
+          name: startingAt
+          schema:
+            type: string
+            format: date-time
+          required: false
+          description: Starting at offset
+        - in: query
+          name: emailAddress
+          schema:
+            type: string
+            format: date-time
+          required: false
+          description: Ending at offset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OnlinePlayerStat'
+        '500':
+          description: Internal Server Error
 components:
   securitySchemes:
     bearerAuth:
@@ -801,6 +888,20 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    OnlinePlayerStat:
+      type: object
+      properties:
+        id:
+          type: integer
+        playerCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - playerCount
+        - createdAt
     Question:
       type: object
       properties:
@@ -933,6 +1034,11 @@ components:
         birthday:
           type: string
           format: date
+        accountId:
+          type: integer
+          format: int32
+        accountUsername:
+          type: string
         gender:
           $ref: '#/components/schemas/CharacterGender'
         health:
@@ -1007,6 +1113,7 @@ components:
       required:
         - id
         - accountId
+        - accountUsername
         - name
         - birthday
         - gender
@@ -1504,6 +1611,23 @@ components:
         - characterSkin
         - isLeader
         - isInGame
+    LoginLogAudit:
+      type: object
+      properties:
+        accountId:
+          type: integer
+          format: int32
+        ipAddress:
+          type: string
+        success:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - ipAddress
+        - createdAt
+        - success
     MemberRankUpdate:
       type: object
       properties:
