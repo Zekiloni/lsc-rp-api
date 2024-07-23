@@ -1,6 +1,7 @@
 package com.crp.ucp.account;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,7 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Integer>
     Optional<AccountEntity> findByEmail(String email);
 
     List<AccountEntity> findByUsernameContainingOrEmailContaining(String username, String email);
+
+    List<AccountEntity> findByUsernameContainingAndEmailContaining(String username, String email);
+
 }
