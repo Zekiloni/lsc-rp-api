@@ -19,7 +19,8 @@ public class WebSecurityConfig {
     private static final String[] AUTH_WHITELIST = {
             "/authentication",
             "/account",
-            "/quiz"
+            "/quiz",
+            "/stats/**"
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
