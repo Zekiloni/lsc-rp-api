@@ -82,4 +82,8 @@ public class CharacterService {
     public CharacterEntity updateCharacter(CharacterEntity character) {
         return characterRepository.save(character);
     }
+
+    public List<CharacterEntity> getOnlineCharacters(){
+        return characterRepository.findAllOnlineCharacters();
+    }
 }

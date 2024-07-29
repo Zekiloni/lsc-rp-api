@@ -1,6 +1,7 @@
 package com.crp.ucp.character;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface CharacterRepository extends JpaRepository<CharacterEntity, Inte
     List<CharacterEntity> findByNameContainingOrAccountUsernameContaining(String name, String accountUsername);
 
     List<CharacterEntity> findByNameContainingAndAccountUsernameContaining(String name, String accountUsername);
+
+    @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isInGame = 1")
+    List<CharacterEntity> findAllOnlineCharacters();
 }

@@ -849,6 +849,23 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /online-players:
+    get:
+      operationId: getOnlinePlayers
+      tags:
+        - onlinePlayersApi
+      summary: Get right now online characters (in game)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OnlinePlayerStat'
+        '500':
+          description: Internal Server Error
   /stats/online-players:
     get:
       operationId: listOnlinePlayersStat
@@ -888,6 +905,24 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    OnlinePlayer:
+      type: object
+      properties:
+        accountUsername:
+          type: string
+        characterName:
+          type: string
+        characterSkin:
+          type: integer
+        factionName:
+          type: string
+        administrator:
+          type: integer
+      required:
+        - accountUsername
+        - characterName
+        - factionName
+        - administrator
     OnlinePlayerStat:
       type: object
       properties:
