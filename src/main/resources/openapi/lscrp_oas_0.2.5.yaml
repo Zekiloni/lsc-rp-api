@@ -243,6 +243,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Character'
+  /character/unapproved:
+    get:
+      summary: Get a list of unapproved characters
+      operationId: listUnapprovedCharacter
+      tags:
+        - characterApi
+      security:
+        - bearerAuth: [ ]
+      x-roles-allowed:
+        - admin
+        - super_admin
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
   /character/{id}:
     get:
       summary: Get a character by ID
@@ -1142,6 +1162,15 @@ components:
         fightingStyle:
           type: integer
           description: The fighting style of the character
+        isApproved:
+          type: boolean
+        approvedBy:
+          type: string
+        deniedReason:
+          type: string
+        approvedAt:
+          type: string
+          format: date-time
         createdAt:
           type: string
           format: date-time
@@ -1177,7 +1206,6 @@ components:
         - fightingStyle
         - createdAt
         - factionId
-
     CharacterCreate:
       type: object
       properties:
@@ -1216,6 +1244,15 @@ components:
           type: integer
           minimum: 0
           maximum: 100
+        isApproved:
+          type: boolean
+        approvedBy:
+          type: string
+        deniedReason:
+          type: string
+        approvedAt:
+          type: string
+          format: date-time
 
     Authentication:
       type: object

@@ -77,14 +77,18 @@ public class CharacterService {
         character.setCreatedAt(OffsetDateTime.now());
         character.setApproved(false);
 
-        return  characterRepository.save(character);
+        return characterRepository.save(character);
     }
 
     public CharacterEntity updateCharacter(CharacterEntity character) {
         return characterRepository.save(character);
     }
 
-    public List<CharacterEntity> getOnlineCharacters(){
+    public List<CharacterEntity> getOnlineCharacters() {
         return characterRepository.findAllOnlineCharacters();
+    }
+
+    public List<CharacterEntity> getAllUnapprovedCharacters() {
+        return characterRepository.findAllUnapprovedCharacters();
     }
 }

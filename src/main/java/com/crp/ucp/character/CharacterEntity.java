@@ -123,7 +123,8 @@ public class CharacterEntity {
 
     private boolean isApproved;
 
-    private LocalDateTime approvedAt;
+    @Column(name = "approved_at")
+    private OffsetDateTime approvedAt;
 
     private String approvedBy;
 }

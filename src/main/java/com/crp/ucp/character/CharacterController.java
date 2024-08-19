@@ -1,6 +1,7 @@
 package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountException;
+import com.crp.ucp.server.api.CharacterApi;
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterCreate;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,11 @@ public class CharacterController implements com.crp.ucp.server.api.CharacterApi 
     private final CharacterService characterService;
 
     private final CharacterMapper characterMapper;
+
+    @Override
+    public ResponseEntity<List<Character>> listUnapprovedCharacter() {
+        return ResponseEntity.ok(characterMapper.mapTo(characterService.getAllUnapprovedCharacters()));
+    }
 
     @Override
     public ResponseEntity<Character> createCharacter(CharacterCreate characterCreate) {
