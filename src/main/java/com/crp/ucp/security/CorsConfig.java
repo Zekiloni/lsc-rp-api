@@ -22,7 +22,6 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins(devAllowedOrigin, lscrpAllowedOrigin)
                         .allowedMethods(
                                 HttpMethod.GET.name(),
                                 HttpMethod.POST.name(),
@@ -30,6 +29,7 @@ public class CorsConfig {
                                 HttpMethod.DELETE.name(),
                                 HttpMethod.PATCH.name()
                         )
+                        .allowedOriginPatterns(devAllowedOrigin, lscrpAllowedOrigin)
                         .allowedHeaders("*");
             }
         };
