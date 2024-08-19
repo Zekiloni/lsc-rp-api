@@ -75,6 +75,7 @@ public class CharacterService {
         character.setPaycheck(0);
         character.setState(0);
         character.setCreatedAt(OffsetDateTime.now());
+        character.setApproved(false);
 
         return  characterRepository.save(character);
     }

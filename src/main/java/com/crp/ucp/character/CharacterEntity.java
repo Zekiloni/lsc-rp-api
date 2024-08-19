@@ -10,6 +10,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,4 +120,10 @@ public class CharacterEntity {
 
     @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PropertyEntity> properties = new ArrayList<>();
+
+    private boolean isApproved;
+
+    private LocalDateTime approvedAt;
+
+    private String approvedBy;
 }
