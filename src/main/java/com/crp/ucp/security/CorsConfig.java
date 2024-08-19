@@ -13,6 +13,10 @@ public class CorsConfig {
     @Value("${security.allowed-origin}")
     private String lscrpAllowedOrigin;
 
+
+    @Value("${security.www-allowed-origin}")
+    private String wwwLscrpAllowedOrigin;
+
     private final String devAllowedOrigin = "http://localhost:4200";
 
     @Bean
@@ -29,7 +33,7 @@ public class CorsConfig {
                                 HttpMethod.DELETE.name(),
                                 HttpMethod.PATCH.name()
                         )
-                        .allowedOriginPatterns(devAllowedOrigin, lscrpAllowedOrigin)
+                        .allowedOrigins(devAllowedOrigin, lscrpAllowedOrigin, wwwLscrpAllowedOrigin)
                         .allowedHeaders("*");
             }
         };
