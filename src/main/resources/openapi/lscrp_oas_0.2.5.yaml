@@ -863,14 +863,14 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/OnlinePlayerStat'
+                  type: string
         '500':
           description: Internal Server Error
   /stats/online-players:
     get:
       operationId: listOnlinePlayersStat
       tags:
-        - statApi
+        - onlinePlayerStatApi
       summary: Get a list of all online players count audit in date range
       parameters:
         - in: query
@@ -881,7 +881,7 @@ paths:
           required: false
           description: Starting at offset
         - in: query
-          name: emailAddress
+          name: endingAt
           schema:
             type: string
             format: date-time

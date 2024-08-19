@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -38,6 +39,8 @@ public class AccountController implements com.crp.ucp.server.api.AccountApi {
         if (Objects.nonNull(username) && Objects.nonNull(emailAddress)) {
             return ResponseEntity.ok(accountMapper.mapTo(accountService.getByUsernameAndEmail(username, emailAddress)));
         }
+
+        SecurityContextHolder.getContext().getAuthentication();
 
         if (Objects.nonNull(username) || Objects.nonNull(emailAddress)) {
             return ResponseEntity.ok(accountMapper.mapTo(accountService.getByUsernameOrEmail(username, emailAddress)));
