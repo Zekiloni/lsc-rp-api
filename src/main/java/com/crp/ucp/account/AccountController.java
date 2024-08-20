@@ -40,8 +40,6 @@ public class AccountController implements com.crp.ucp.server.api.AccountApi {
             return ResponseEntity.ok(accountMapper.mapTo(accountService.getByUsernameAndEmail(username, emailAddress)));
         }
 
-        SecurityContextHolder.getContext().getAuthentication();
-
         if (Objects.nonNull(username) || Objects.nonNull(emailAddress)) {
             return ResponseEntity.ok(accountMapper.mapTo(accountService.getByUsernameOrEmail(username, emailAddress)));
         }
