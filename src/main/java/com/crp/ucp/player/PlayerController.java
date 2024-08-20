@@ -1,6 +1,5 @@
 package com.crp.ucp.player;
 
-import com.crp.ucp.server.api.OnlinePlayersApi;
 import com.crp.ucp.server.api.StatsApi;
 import com.crp.ucp.server.model.OnlinePlayerStat;
 import lombok.RequiredArgsConstructor;
