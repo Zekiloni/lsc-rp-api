@@ -121,10 +121,12 @@ public class CharacterEntity {
     @OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PropertyEntity> properties = new ArrayList<>();
 
-    private boolean isApproved;
+    @Column(name = "is_approved", nullable = true)
+    private Boolean isApproved;
 
-    @Column(name = "approved_at")
+    @Column(name = "approved_at", nullable = true)
     private OffsetDateTime approvedAt;
 
+    @Column(name = "approved_by", nullable = true)
     private String approvedBy;
 }

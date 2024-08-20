@@ -21,6 +21,6 @@ public interface CharacterRepository extends JpaRepository<CharacterEntity, Inte
     @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isInGame = 1")
     List<CharacterEntity> findAllOnlineCharacters();
 
-    @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isApproved = null")
+    @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isApproved IS NULL")
     List<CharacterEntity> findAllUnapprovedCharacters();
 }
