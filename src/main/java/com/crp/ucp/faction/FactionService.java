@@ -36,7 +36,7 @@ public class FactionService {
         character.setFactionId(NO_FACTION_ID);
         character.setRankName(null);
         character.setIsLeader(0);
-        return mapTo(characterService.updateCharacter(character));
+        return mapTo(characterService.patchCharacter(character));
     }
 
     public FactionMemberProjection updateFactionMemberRank(Integer characterId, String rankName) {
@@ -45,7 +45,7 @@ public class FactionService {
 
         character.setRankName(rankName);
 
-        return mapTo(characterService.updateCharacter(character));
+        return mapTo(characterService.patchCharacter(character));
     }
 
     public List<FactionMemberProjection> getFactionMembers(Integer factionId) {

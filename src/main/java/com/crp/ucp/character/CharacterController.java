@@ -1,9 +1,9 @@
 package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountException;
-import com.crp.ucp.server.api.CharacterApi;
 import com.crp.ucp.server.model.Character;
 import com.crp.ucp.server.model.CharacterCreate;
+import com.crp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -24,6 +24,11 @@ public class CharacterController implements com.crp.ucp.server.api.CharacterApi 
     private final CharacterService characterService;
 
     private final CharacterMapper characterMapper;
+
+    @Override
+    public ResponseEntity<Character> patchCharacter(Integer id, CharacterUpdate characterUpdate) {
+        return ResponseEntity.ok(characterMapper.mapTo(characterService.patchCharacter(id, characterUpdate)));
+    }
 
     @Override
     public ResponseEntity<List<Character>> listUnapprovedCharacter() {

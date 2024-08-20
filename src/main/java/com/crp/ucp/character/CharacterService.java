@@ -2,16 +2,21 @@ package com.crp.ucp.character;
 
 import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.account.AccountService;
+import com.crp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
 import static com.crp.ucp.account.AccountUtil.throwAccountNotFoundException;
+import static com.crp.ucp.character.CharacterUtil.throwCharacterNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -79,7 +84,21 @@ public class CharacterService {
         return characterRepository.save(character);
     }
 
-    public CharacterEntity updateCharacter(CharacterEntity character) {
+    public CharacterEntity patchCharacter(CharacterEntity character) {
+        return characterRepository.save(character);
+    }
+
+    public CharacterEntity patchCharacter(Integer characterId, CharacterUpdate characterUpdate) {
+        CharacterEntity character = getCharacterById(characterId)
+                .orElseThrow(throwCharacterNotFoundException(characterId));
+
+        if (Objects.nonNull(characterUpdate.getIsApproved())) {
+            character.setIsApproved(characterUpdate.getIsApproved());
+            character.setApprovedAt(OffsetDateTime.now());
+            AccountEntity administrator = (AccountEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            character.setApprovedBy(administrator.getUsername());
+        }
+
         return characterRepository.save(character);
     }
 
