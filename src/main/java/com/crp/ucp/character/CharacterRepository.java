@@ -23,4 +23,7 @@ public interface CharacterRepository extends JpaRepository<CharacterEntity, Inte
 
     @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isApproved IS NULL")
     List<CharacterEntity> findAllUnapprovedCharacters();
+
+    @Query("SELECT ch FROM CharacterEntity ch WHERE ch.isApproved = false")
+    List<CharacterEntity> findAllRejectedCharacters();
 }

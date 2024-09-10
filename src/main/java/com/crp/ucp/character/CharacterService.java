@@ -4,7 +4,6 @@ import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.account.AccountService;
 import com.crp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +47,14 @@ public class CharacterService {
 
     public List<CharacterEntity> getCharactersByFactionId(Integer factionId) {
         return characterRepository.findByFactionId(factionId);
+    }
+
+    public void deleteCharacterById(Integer characterId) {
+        characterRepository.deleteById(characterId);
+    }
+
+    public void deleteCharacter(CharacterEntity character) {
+        characterRepository.deleteById(character.getId());
     }
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
@@ -108,5 +115,9 @@ public class CharacterService {
 
     public List<CharacterEntity> getAllUnapprovedCharacters() {
         return characterRepository.findAllUnapprovedCharacters();
+    }
+
+    public List<CharacterEntity> getAllRejectedCharacters() {
+        return characterRepository.findAllRejectedCharacters();
     }
 }
