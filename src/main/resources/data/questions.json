@@ -1,511 +1,528 @@
 [
   {
-    "question": "Šta znači metagaming u roleplay kontekstu?",
+    "question": "Kako bi trebao da pristupiš kreiranju legalnog karaktera u igri?",
     "answers": [
       {
-        "answer": "Korišćenje vanigra informacija u igri.",
+        "answer": "Da definišeš jasno zanimanje, veštine i ciljeve karaktera, kao i njegovu pozadinu i motivaciju.",
         "isCorrect": true
       },
       {
-        "answer": "Organizovanje igračkih događaja bez dozvole admina.",
+        "answer": "Da se fokusiraš samo na fizičke karakteristike i izgled, bez dubokog razmišljanja o njegovom životnom. putu.",
         "isCorrect": false
       },
       {
-        "answer": "Stvaranje novih likova bez obaveštenja o adminima.",
+        "answer": "Da se baviš samo kratkoročnim ciljevima i ne obraćaš pažnju na dugoročni razvoj karaktera.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta je 'deathmatch' u GTA roleplay-u?",
+    "question": "Koji su ključni elementi koje treba uzeti u obzir prilikom stvaranja ilegalnog karaktera?",
     "answers": [
       {
-        "answer": "Nasumično ubijanje drugih igrača bez razloga ili RP pozadine.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Koristiti pištolj za duel u igri.",
+        "answer": "Da se fokusiraš na ilegalne aktivnosti bez obzira na legalne aspekte ili posledice.",
         "isCorrect": false
       },
       {
-        "answer": "Igrati za pare.",
+        "answer": "Da kreiraš kompleksnu pozadinu koja obuhvata kako je karakter dospeo u kriminalni svet, njegove motive i odnose sa drugim likovima.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da se koncentrišeš samo na ponašanje karaktera tokom kriminalnih aktivnosti.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se koristi komanda /me u roleplay scenariju?",
+    "question": "Ako tvoj ilegalni karakter planira pljačku ili sličnu kriminalnu aktivnost, šta je ključno za uspeh plana?",
     "answers": [
       {
-        "answer": "Za opisivanje akcija svog lika.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Za pretragu novca.",
+        "answer": "Da izvedeš plan bez ikakvih priprema, verujući u sreću.",
         "isCorrect": false
       },
       {
-        "answer": "Za spajanje sa drugim igracima.",
+        "answer": "Da razviješ detaljan plan, prikupiš informacije, razmotriš sve moguće rizike i osiguraš da svi učesnici budu koordinirani.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da se osloniš na improvizaciju i očekuješ da će sve ići kako je planirano.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se koristi komanda /do u roleplay scenariju?",
+    "question": "Kako bi trebao da reaguješ ako otkriješ da tvoj legalni karakter ima posla sa korumpiranim ili neetičkim klijentima?",
     "answers": [
       {
-        "answer": "Za postavljanje pitanja drugim igračima ili administraciji.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Za davanje novca drugom igraču.",
+        "answer": "Da ignorišeš situaciju ako to donosi profit i koristi tvojoj firmi",
         "isCorrect": false
       },
       {
-        "answer": "Za brzo isporucivanje paketa.",
+        "answer": "Da preispitaš etičke posledice, razmisliš o uticaju na reputaciju i odlučiš o daljim koracima u skladu sa svojim moralnim vrednostima",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da se ponašaš kao da ništa nije uočeno i nastaviš sa poslovanjem bez ikakvih promena",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta je 'gun from ass' u roleplay scenariju?",
+    "question": "Kada kreiraš ilegalnog karaktera, kako bi trebao da postupaš sa informacijama koje dobijaš tokom svojih aktivnosti?",
     "answers": [
       {
-        "answer": "Neskladan ili nerealno brz pristup oružju.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Oružje koje se skriva na skrivenom mestu.",
+        "answer": "Da koristiš informacije samo za svoje lične interese i ciljeve, prenoseći ih između svih tvojih karaktera.",
         "isCorrect": false
       },
       {
-        "answer": "Oružje koje se koristi za izradu novca.",
+        "answer": "Da čuvaš informacije striktno poverljivo, koristiš ih za planiranje i strategiju svog karaktera, i paziš na moguće posledice.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da deliš informacije sa svima, preko diskorda i ostalih mreža.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Koja je osnovna svrha roleplay-a u GTA scenariju?",
+    "question": "Šta je najvažnije kod kreiranja karaktera koji je lider legalne organizacije?",
     "answers": [
       {
-        "answer": "Imitacija stvarnog života i usvajanje uloge lika.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Ubrzanje brzine u igri.",
+        "answer": "Da se fokusiraš na vođenje operacija i zadatke bez obzira na interne odnose i timsku dinamiku",
         "isCorrect": false
       },
       {
-        "answer": "Kreiranje novih računa.",
+        "answer": "Da razviješ snažnu viziju, jasno definišeš ciljeve organizacije i vodiš računa o motivaciji i dobrobiti svojih članova",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da stvoriš organizaciju koja je bolja od drugih.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se postupa sa /report komandom u roleplay scenariju?",
+    "question": "Ako je tvoj ilegalni karakter uhvaćen od strane policije, šta bi trebao da uradiš kako bi se nosio sa situacijom?",
     "answers": [
       {
-        "answer": "Koristi se za prijavljivanje nepravilnosti administraciji.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Za prijavu igrača koji krše pravila servera.",
+        "answer": "Da se ponašaš agresivno i pokušavaš da pobegneš iz zatvora, jer je zatvor dosadan.",
         "isCorrect": false
       },
       {
-        "answer": "Za pomoć igračima u hitnim situacijama.",
+        "answer": "Da tražiš pravnu pomoć, surađuješ sa vlastima i koristiš sve moguće strategije kako bi smanjio posledice ili razviješ drugačiji roleplay.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Da se izoluješ od svojih saveznika i nadaš se da će sve proći bez problema, dok povremeno uđeš u igru da ti prođe kazna.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako bi trebalo reagovati na situaciju 'powergaming'?",
+    "question": "Kako bi objasnio pravilo SK (Spawn Kill) i kako ga možetš izbeći koristeći komande /me i /do?",
     "answers": [
       {
-        "answer": "Nerealna akcija ili prinudna interakcija sa drugim igračem.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Praviti zabavu s prijateljima.",
+        "answer": "SK je svako ubijanje koje se desi dok se igrač kreće u igri. Komande ne igraju ulogu.",
         "isCorrect": false
       },
       {
-        "answer": "Igra se igra za novac.",
+        "answer": "SK je ubijanje igrača odmah nakon što se pojavi na spawn tački. Da biste izbegli ovo, koristite /me za opisivanje radnji pre spawna i /do za prikazivanje reakcija u tom kontekstu.",
+        "isCorrect": true
+      },
+      {
+        "answer": "SK je ubijanje igrača bez upozorenja. Koristite komande da biste prikazali da je igrač neočekivano ubijen.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta znači 'in character' (IC) u roleplay terminologiji?",
+    "question": "Kako biste koristili komandu /do da opišete šta se događa u prostoru kada vaš karakter aktivira kompleksan uređaj za prisluškivanje?",
     "answers": [
       {
-        "answer": "Interakcija likova u igri, ne van nje.",
+        "answer": "/do Uređaj se aktivira uz tiho zujanje, a svetlosni indikatori na njemu počinju da trepću. U prostoriji se čuje povremeni šum, a uređaj je postavljen na stolici u uglu sobe.",
         "isCorrect": true
       },
       {
-        "answer": "Interakcija s karakterima.",
+        "answer": "/do Uređaj za prisluškivanje se automatski povezuje sa svim telefonima u blizini i odmah počinje da snima sve razgovore.",
         "isCorrect": false
       },
       {
-        "answer": "Informativni programi u televiziji.",
+        "answer": "/do Nakon aktivacije uređaja, prostorija se potpuno zatamni i temperatura se naglo smanji, stvarajući napetost.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se koristi 'out of character' (OOC) u roleplay kontekstu?",
+    "question": "Kako biste koristili komandu /me da opišete kako vaš karakter skriva važan dokument u tajnom prostoru u svom stanu?",
     "answers": [
       {
-        "answer": "Van lika, izvan roleplay-a.",
+        "answer": "/me pažljivo otvara tajni pretinac iza police sa knjigama i stavlja dokument unutra, zatim pažljivo zatvara pretinac i vraća knjige na mesto.",
         "isCorrect": true
       },
       {
-        "answer": "Prepisci i provera novca.",
+        "answer": "/me stavlja dokument na tajno mesto.",
         "isCorrect": false
       },
       {
-        "answer": "Da li je unutra ili van televizije.",
+        "answer": "/me skriva dokment i okreće se preko ramena. Dokument se ne može naći.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta znači 'fail roleplay' u roleplay scenariju?",
+    "question": "Koja tvrdnja je tačna?",
     "answers": [
       {
-        "answer": "Neuspešno izvršavanje uloge lika u igri.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Uspešno izvršavanje uloge lika u igri.",
+        "answer": "Roleplay odvratnih radnji je dozvoljen.",
         "isCorrect": false
       },
       {
-        "answer": "Pisanje zapisa u igri.",
+        "answer": "Roleplay odvratnih radnji nije dozvoljen.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Roleplay odvratnih radnji je dozvoljen, uz poštovanje pravila, saglasnost ostalih igrača i odvojenost od javnosti.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Šta znači termin Metagaming?",
+    "answers": [
+      {
+        "answer": "Korišćenje informacija dobijenih van igre u igri.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Korišćenje oružja van dozvoljenog vremena.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Korišćenje vozila bez dozvole.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Koja je svrha 'character backstory' (pozadine lika) u roleplay scenariju?",
+    "question": "Nalaziš se u restoranu, i dok jedeš, u lokal upada osoba sa pištoljem. Ona traži od svih prisutnih da predaju novac. Šta bi trebalo da uradiš?",
     "answers": [
       {
-        "answer": "Davanje dubine i konteksta liku koji se igra.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Uspostavljanje novih likova.",
+        "answer": "Otrčiš ka izlazu i pobegneš.",
         "isCorrect": false
       },
       {
-        "answer": "Stvaranje akcija u igri.",
+        "answer": "Ostaneš miran i predaš novac, poštujući situaciju.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Izvadiš pištolj iz džepa i pokušaš da savladaš napadača.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se koristi 'IC information' (IC informacija) u roleplay scenariju?",
+    "question": "Voziš se po gradu i naiđeš na osobu koja se kreće suprotnim smerom velikom brzinom i sudarite se. Kako bi postupio?",
     "answers": [
       {
-        "answer": "Informacije koje su dostupne samo u okviru igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Informacije o karakterima.",
+        "answer": "Nastaviš vožnju kao da se ništa nije desilo.",
         "isCorrect": false
       },
       {
-        "answer": "Informacije o internetu.",
+        "answer": "Izađeš iz vozila i započneš RP interakciju vezanu za sudar.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Ignorišeš sudar i nastaviš da voziš, jer ne želiš RP interakciju sa tom osobom.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta znači 'IC money' (IC novac) u roleplay terminologiji?",
+    "question": "U igri si deo mafije. Dobio si informaciju od druge fakcije da te traži policija i da je poternica izdata. Kako se ponašaš?",
     "answers": [
       {
-        "answer": "Novac koji je dostupan i koristi se unutar igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Novac koji se koristi za kupovinu u igri.",
+        "answer": "Nastaviš normalno da šetaš gradom kao da se ništa ne dešava.",
         "isCorrect": false
       },
       {
-        "answer": "Novac koji je dostupan u vanrednim situacijama.",
+        "answer": "Pozoveš kolege i prijatelje i odlučiš da se obračunaš sa policijom.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Promeniš mesto boravka i sakriješ se, poštujući RP posledice poternice.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Nalaziš se u pucnjavi sa drugom fakcijom. Oni te pogode nekoliko puta i tvoj lik padne na tlo. Šta radiš?",
+    "answers": [
+      {
+        "answer": "Roleplayuješ gubitak svesti ili teško ranjavanje, poštujući RP povrede.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Nastavljaš da pucaš, iako si već pao.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Brzo ustaneš i trčiš na sigurno mesto, kako te ne bi ubili.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako bi trebalo postupiti sa 'OOC information' (OOC informacijama) u roleplay scenariju?",
+    "question": "Voziš automobil i neko te zaustavi zbog saobraćajnog prekršaja. Ti smatraš da nisi kriv. Kako se ponašaš?",
     "answers": [
       {
-        "answer": "Ne koristiti van lika ili van igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Koristiti samo unutar igre.",
+        "answer": "Odbiješ da zaustaviš auto i nastaviš da voziš - oprobaš sreću jer možda uspeš da pobegneš, pazeći da voziš u skladu sa RP pravilima.",
         "isCorrect": false
       },
       {
-        "answer": "Deliti sa drugim igračima.",
+        "answer": "Zaustaviš auto i RP-uješ situaciju, iako misliš da nisi kriv.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Izvučeš oružje i pokušaš da zastrašiš osobu koja te zaustavila.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Ko je odgovoran za održavanje 'roleplay continuity' (kontinuitet roleplay-a) u igri?",
+    "question": "Nalaziš se u situaciji u kojoj osoba preti tvojoj fakciji. Ona je sama, a vi ste u velikom broju. Kako postupaš?",
     "answers": [
       {
-        "answer": "Svi igrači u zajednici.",
+        "answer": "Pokušaš da smiriš situaciju pregovorima, bez eskalacije, ukoliko je to moguće. ",
         "isCorrect": true
       },
       {
-        "answer": "Administratori i moderatori.",
+        "answer": "Napadaš je odmah jer imate brojčanu nadmoć, tako da se situacija odmah reši.",
         "isCorrect": false
       },
       {
-        "answer": "Samo osnivači servera.",
+        "answer": "Zoveš ostatak fakcije i napadate osobu istog trenutka- uostalom, šta on radi na tvojoj teritoriji?",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Koja je svrha 'RP scenario' (RP scenarija) u GTA roleplay-u?",
+    "question": "Nalaziš se u policijskoj stanici i tvoju kriminalnu grupu (tebe) ispituju za krivično delo. Kako bi postupio?",
     "answers": [
       {
-        "answer": "Organizovanje specifičnih događaja i situacija za igrače.",
+        "answer": "Odbiješ da odgovaraš na pitanja i tražiš advokata.",
         "isCorrect": true
       },
       {
-        "answer": "Uspostavljanje novih likova.",
+        "answer": "Priznaješ krivicu bez ikakvog otpora, i trudiš se da sarađuješ kao dobar građanin.",
         "isCorrect": false
       },
       {
-        "answer": "Stvaranje novih akcija u igri.",
+        "answer": "Pokušavaš da pobegneš iz stanice tokom ispitivanja.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta je 'RP etiquette' (RP etika) i zašto je važna u roleplay scenariju?",
+    "question": "Našao si se u situaciji u kojoj se pet osoba pored tebe tuče a ti si slučajni prolaznik. Jedna osoba ti je simpatična. Kako ćeš postuiti?",
     "answers": [
       {
-        "answer": "Set pravila i ponašanja koja promovišu pozitivan roleplay doživljaj.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Pravila koja se primenjuju samo na administratore.",
+        "answer": "Samoinicijativno se prijaviš policiji, iako nije bilo razloga za to.",
         "isCorrect": false
       },
       {
-        "answer": "Pravila koja su važna za pisanje zapisa.",
+        "answer": "Umešaćeš se u tuču, jer ti je ta jedna osoba simpatična.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Pokušaš da se distanciraš od svih i da se ne umešaš u situaciju.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Tvoj prijatelj je odlučio da više ne igra na serveru. Nudi ti da ti da svu svoju imovinu. Kako bi postupio?",
+    "answers": [
+      {
+        "answer": "Uzeo bih imovinu, jer njemu više ne treba. Bolje nego da stoji bez koristi.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Poslao bih poruku administraciji, a zatim preuzeo imovinu.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Zahvalio bi se prijatelju, ali ne bih uzeo imovinu.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Ti i tvoji prijatelji planirate RP pljačku banke, kako bi išao proces planiranja i realizacije?",
+    "answers": [
+      {
+        "answer": "Kontaktirali bi administraciju, a zatim uz dozvolu admina roleplay-ali planiranje tako da je sve po RP standardu. Zatim bi uz prisustvo administracije opljačkali banku, trudeći se da je realistično.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Seli bi u auto, a zatim se zaputili prema banci. Tokom pljačke bi se trudili da je sve realistično i da izgleda dobro posmatračima.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Ušli bi u banku i izvadili oružije. Sve bi bilo ispraćeno roleplayom.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se definiše 'RP character development' (razvoj lika) u roleplay scenariju?",
+    "question": "Tvoj lik prodaje drogu. Policajac pokušava da te uhapsi na osnovu informacija koje su saznali van igre (metagaming). Kako bi reagovao?",
     "answers": [
       {
-        "answer": "Progresija i promene koje lik prolazi tokom vremena u igri.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Dizajniranje novih karaktera u igri.",
+        "answer": "Odbijaš da sarađuješ jer znaš da je metagaming u pitanju.",
         "isCorrect": false
       },
       {
-        "answer": "Organizovanje novih događaja u igri.",
+        "answer": "Prihvataš hapšenje bez rasprave, a kasnije prijavljuješ preko foruma.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Braniš se vatrenim oružjem, jer su informacije stečene putem OOC.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta znači 'RP server rules' (RP pravila servera) u GTA roleplay scenariju?",
+    "question": "Tvoj lik vodi kafić u gradu. Mafija dolazi i hoće procenat na mesečnom nivou. Kako bi postupio?",
     "answers": [
       {
-        "answer": "Set pravila koja regulišu ponašanje igrača na serveru u roleplay scenariju.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Set pravila koja se primenjuju na sve igrace.",
+        "answer": "Prihvatio bi procenat, a čim odu bi pozvao policiju da prijavim.",
         "isCorrect": false
       },
       {
-        "answer": "Set pravila koja se primenjuju na sve administratore.",
+        "answer": "Razmišljao bi o zatvaranju biznisa i prelaska na drugi karakter.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Pokušao bi da putem roleplaya rešiš sukob, i smanjiš mesečnu ratu za što veći deo. Bio bi uplašen ali bi učestvovao u roleplayu.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Deo si ilegalne organizacije, i odlučili ste da nekome zapalite restoran. Kako bi postupio?",
+    "answers": [
+      {
+        "answer": "Dobro bi isplanirali, a zatim se uputili ka restoranu gde bi uz dobar roleplay zapalili lokal.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Obavestili bi administraciju, a zatim uz dozvolu i dobro planiranje krenuli u realizaciju. Nakon toga bi se pritajili.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Ovakve radnje nisu dozvoljene.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Šta je 'RP vehicle theft' (krađa vozila) u roleplay scenariju?",
+    "question": "Označi tačan odgovor:",
     "answers": [
       {
-        "answer": "Neovlašćeno uzimanje ili korišćenje vozila drugog igrača bez dozvole u skladu sa roleplay pravilima.",
+        "answer": "Green zones su zone u kojima su ilegalne radnje zabranjene.",
         "isCorrect": true
       },
       {
-        "answer": "Korišćenje vozila za transport.",
+        "answer": "Green zones su zone gde su ilegalne radnje dozvoljene kada nema nikoga.",
         "isCorrect": false
       },
       {
-        "answer": "Prodaja vozila drugim igračima.",
+        "answer": "Green zones su zone gde se pere prljavi novac.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se koristi 'RP property ownership' (vlasništvo nad imovinom) u roleplay scenariju?",
+    "question": "Nakon roleplay situacije u kojoj je vaš lik umro, na mesto se možete vratiti:",
     "answers": [
       {
-        "answer": "Legalno posedovanje ili upravljanje imovinom unutar igre u skladu sa roleplay pravilima.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Prodaja imovine drugim igračima.",
+        "answer": "Nakon 15 minuta od smrti.",
         "isCorrect": false
       },
       {
-        "answer": "Kupovina novih objekata.",
+        "answer": "Nakon 30 minuta od smrti.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Kada se situacija koja je dovela do smrti tvog lika potpuno završi.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Označi tačan odgovor:",
+    "answers": [
+      {
+        "answer": "Prevare i pljačke na serveru su dozvoljene, u bilo kom obliku, dok god postoji saglasnost admina.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Prevare na serveru su dozvoljene, osim za imovinu kao što su automobili, biznisi, kuće i druge nepokretnosti.",
+        "isCorrect": true
+      },
+      {
+        "answer": "Prevara za novac je dozvoljena do $500.000 dok za oružje i drogu ne postoje ograničenja.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako se definiše 'RP police interaction' (interakcija sa policijom) u roleplay scenariju?",
+    "question": "Vaš karakter je bio član ilegalne organizacije, ali nakon toga neko vreme prestajete sa igrom. Vraćate se nakon nekoliko meseci i odlučujete da se prijavite na konkurs za LSSD. Da li je ovo dozvoljeno?",
     "answers": [
       {
-        "answer": "Saradnja ili konflikt sa policijom u skladu sa roleplay situacijom i pravilima.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Upravljanje zakonima i redom.",
+        "answer": "Da, jer niste bili tu neko vreme, i sada skoro da počinjete iznova.",
         "isCorrect": false
       },
       {
-        "answer": "Pomoć administraciji.",
+        "answer": "Da, jer ste rpali da se u tih nekoliko meseci vaš karakter totalno promenio.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Ne, ukoliko sam započeo gradnju karaktera u kriminalnim krugovima, nije realistično da se tek tako prijavim na konkurs za policiju.",
+        "isCorrect": true
+      }
+    ]
+  },
+  {
+    "question": "Opljačkali ste nekoga na ulici i hoćete da se udaljite, šta ćete uraditi?",
+    "answers": [
+      {
+        "answer": "Udaljiću se, pretiću mu da ne sme da pozove policiju i pobeći. ",
+        "isCorrect": true
+      },
+      {
+        "answer": "Ubiću žrtvu kako ne bi bilo svedoka.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Roleplajaću da mi nije video lice, iako nisam nosio masku, a zatim se udaljiti.",
         "isCorrect": false
       }
     ]
   },
   {
-    "question": "Kako bi trebalo reagovati na situaciju 'RP jail roleplay' (roleplay zatvorske situacije) u igri?",
+    "question": "Pored tebe se nalazi igrač koji krši pravila tokom interakcije sa tobom. Šta ćeš uraditi?",
     "answers": [
       {
-        "answer": "Ponašati se u skladu sa pravilima zatvorskog života i izvršavati ulogu lika tokom kazne.",
+        "answer": "Prijaviti ga na report i ignorisati ga.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Prijaviti ga na report, i poslati mu pritavtnu poruku da krši pravila.",
+        "isCorrect": false
+      },
+      {
+        "answer": "Poslati mu privatnu poruku da to nije u skladu sa pravilima i nastaviti roleply. Zatim, ako nastavi, prijavuću ga na forumu.",
         "isCorrect": true
-      },
-      {
-        "answer": "Izbeći ulazak u zatvor.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Tražiti pomoć od drugih igrača.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Šta je 'RP business ownership' (vlasništvo nad poslom) u GTA roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Legalno posedovanje ili upravljanje poslovnim entitetom unutar igre u skladu sa roleplay pravilima.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Organizovanje novih događaja u igri.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Korišćenje novca za poslovne transakcije.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Kako se koristi 'RP emergency services' (usluge hitne pomoći) u roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Pravilno korišćenje hitnih službi i postupanje u skladu sa situacijom unutar igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Pomoć drugim igračima u igri.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Upravljanje administracijom.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Šta znači 'RP money laundering' (pranje novca) u roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Nedozvoljeno sakrivanje porekla novca ili finansijskih sredstava unutar igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Korišćenje novca za kupovinu novih vozila.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Organizovanje novih događaja u igri.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Kako bi trebalo postupiti sa 'RP faction roleplay' (roleplay frakcija) u roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Učestvovanje u interakciji i aktivnostima frakcije u skladu sa ulogom i pravilima igre.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Kreiranje novih uloga u igri.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Korišćenje novca za aktivnosti frakcije.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Šta je 'RP civilian roleplay' (roleplay civilnih osoba) u GTA roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Igranje uloge civilne osobe u gradu sa ciljem simulacije svakodnevnog života.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Učestvovanje u događajima na otvorenom.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Pomoć drugim igračima.",
-        "isCorrect": false
-      }
-    ]
-  },
-  {
-    "question": "Kako bi trebalo reagovati na 'RP negotiation' (pregovaranje) u roleplay scenariju?",
-    "answers": [
-      {
-        "answer": "Ponašati se u skladu sa roleplay situacijom i ciljevima tokom pregovora.",
-        "isCorrect": true
-      },
-      {
-        "answer": "Odbiti učešće u pregovorima.",
-        "isCorrect": false
-      },
-      {
-        "answer": "Zatražiti pomoć od administracije.",
-        "isCorrect": false
       }
     ]
   }
