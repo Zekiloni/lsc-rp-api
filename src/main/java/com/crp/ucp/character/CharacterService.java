@@ -81,7 +81,7 @@ public class CharacterService {
         character.setPositionY(BigDecimal.valueOf(0.0));
         character.setPositionZ(BigDecimal.valueOf(0.0));
         character.setIsLeader(0);
-        character.setJob(0);
+        character.setJob(-1);
         character.setMoney(5000);
         character.setSavings(0);
         character.setPaycheck(0);

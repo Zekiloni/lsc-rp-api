@@ -4,6 +4,7 @@ import com.crp.ucp.account.authentication.BadCredentialsException;
 import com.crp.ucp.account.AccountException;
 import com.crp.ucp.server.model.ApiError;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -73,7 +74,17 @@ public class ApiExceptionHandler {
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.BAD_REQUEST.toString());
         error.setReason(exception.getLocalizedMessage());
-        error.setMessage(format("ExpiredJwtException: %s", exception.getMessage()));
+        error.setMessage("Sesija je istekla.");
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+    }
+
+    @ExceptionHandler(MalformedJwtException.class)
+    public ResponseEntity<ApiError> handleMailformedJwtException(MalformedJwtException exception) {
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.BAD_REQUEST.toString());
+        error.setReason(exception.getLocalizedMessage());
+        error.setMessage("Došlo je do greške prilikom verifikacije vaše sesije.");
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
     }

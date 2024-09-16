@@ -3,6 +3,7 @@ package com.crp.ucp.account.authentication;
 import com.crp.ucp.account.AccountEntity;
 import com.crp.ucp.account.AccountMapper;
 import com.crp.ucp.account.AccountService;
+import com.crp.ucp.account.log.LoginLogService;
 import com.crp.ucp.security.JwtAuthenticationService;
 import com.crp.ucp.server.model.Account;
 import com.crp.ucp.server.model.Authentication;
@@ -22,6 +23,8 @@ public class AuthenticationService {
     private final AccountMapper accountMapper;
 
     private final AccountService accountService;
+
+    private final LoginLogService loginLogService;
 
     private final JwtAuthenticationService jwtAuthenticationService;
 

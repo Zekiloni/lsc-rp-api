@@ -93,6 +93,7 @@ public class CharacterEntity {
     @Column(name = "rank_name")
     private String rankName;
 
+    @Column(name = "job")
     private Integer job;
 
     private Integer state;
