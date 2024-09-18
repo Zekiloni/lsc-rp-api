@@ -106,6 +106,10 @@ public class CharacterService {
             character.setApprovedBy(administrator.getUsername());
         }
 
+        if (Objects.nonNull(characterUpdate.getSkin())) {
+            character.setSkin(characterUpdate.getSkin());
+        }
+
         return characterRepository.save(character);
     }
 

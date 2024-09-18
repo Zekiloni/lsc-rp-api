@@ -1026,6 +1026,8 @@ components:
           type: string
         email:
           type: string
+        isInGame:
+          type: boolean
         characters:
           type: array
           items:
@@ -1046,6 +1048,7 @@ components:
       required:
         - id
         - username
+        - isInGame
         - email
         - admin
         - characters
@@ -1240,6 +1243,8 @@ components:
           type: integer
           minimum: 0
           maximum: 100
+        skin:
+          type: integer
         armour:
           type: integer
           minimum: 0
