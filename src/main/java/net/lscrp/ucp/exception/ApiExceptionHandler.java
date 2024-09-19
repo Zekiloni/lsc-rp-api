@@ -1,8 +1,9 @@
-package com.crp.ucp.exception;
+package net.lscrp.ucp.exception;
 
-import com.crp.ucp.account.authentication.BadCredentialsException;
-import com.crp.ucp.account.AccountException;
-import com.crp.ucp.server.model.ApiError;
+import net.lscrp.ucp.account.authentication.BadCredentialsException;
+import net.lscrp.ucp.account.AccountException;
+import net.lscrp.ucp.account.password.reset.ResetPasswordTokenException;
+import net.lscrp.ucp.server.model.ApiError;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import org.springframework.http.HttpStatus;
@@ -80,11 +81,21 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(MalformedJwtException.class)
-    public ResponseEntity<ApiError> handleMailformedJwtException(MalformedJwtException exception) {
+    public ResponseEntity<ApiError> handleMalformedJwtException(MalformedJwtException exception) {
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.BAD_REQUEST.toString());
         error.setReason(exception.getLocalizedMessage());
         error.setMessage("Došlo je do greške prilikom verifikacije vaše sesije.");
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+    }
+
+    @ExceptionHandler(ResetPasswordTokenException.class)
+    public ResponseEntity<ApiError> handleResetPasswordTokenException(ResetPasswordTokenException exception) {
+        ApiError error = new ApiError();
+        error.setStatus(HttpStatus.FORBIDDEN.toString());
+        error.setReason(exception.getLocalizedMessage());
+        error.setMessage(exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
     }
