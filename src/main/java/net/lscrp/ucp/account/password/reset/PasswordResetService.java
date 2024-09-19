@@ -52,5 +52,7 @@ public class PasswordResetService {
 
         String salt = BCrypt.gensalt();
         passwordReset.getAccount().setPassword(BCrypt.hashpw(newPassword, salt));
+
+        accountService.update(passwordReset.getAccount());
     }
 }

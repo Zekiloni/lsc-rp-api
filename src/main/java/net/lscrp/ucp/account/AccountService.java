@@ -53,6 +53,10 @@ public class AccountService implements UserDetailsService {
         return account;
     }
 
+    public AccountEntity update(AccountEntity account) {
+        return accountRepository.save(account);
+    }
+
     private String hashPassword(String password) {
         String salt = BCrypt.gensalt();
         return BCrypt.hashpw(password, salt);
