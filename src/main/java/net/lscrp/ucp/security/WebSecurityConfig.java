@@ -1,4 +1,4 @@
-package com.crp.ucp.security;
+package net.lscrp.ucp.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +19,8 @@ public class WebSecurityConfig {
     private static final String[] AUTH_WHITELIST = {
             "/authentication",
             "/account",
+            "/password-reset",
+            "/password-reset/**",
             "/quiz",
             "/stats/**"
     };
