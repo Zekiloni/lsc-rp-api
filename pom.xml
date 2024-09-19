@@ -11,7 +11,7 @@
 
     <groupId>net.lscrp</groupId>
     <artifactId>ucp</artifactId>
-    <version>1.1.25</version>
+    <version>1.2.0</version>
 
     <name>ucp</name>
     <description>LSCRP User Control Panel</description>
