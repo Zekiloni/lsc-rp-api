@@ -4,7 +4,6 @@ info:
   description: API
   version: 1.0.0
 
-
 paths:
   /account:
     post:
@@ -375,6 +374,64 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+  /password-reset/{username}:
+    get:
+      summary: Forgot Password
+      operationId: createPasswordReset
+      description: Initiates a password reset process by submitting the username as a query parameter.
+      tags:
+        - passwordResetApi
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+            example: john_doe
+          required: true
+          description: The username associated with the account.
+      responses:
+        '200':
+          description: Password reset email sent successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+  /password-reset/{token}:
+    post:
+      summary: Forgot Password Reset
+      operationId: handlePasswordReset
+      description: Initiates a password reset request
+      tags:
+        - passwordResetApi
+      parameters:
+        - in: path
+          name: token
+          schema:
+            type: string
+            example: 435H43QP98F4uTHRtr4NRR4RN89Ohn3
+          required: true
+          description: The token associated with the reset password request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPassword'
+      responses:
+        '200':
+          description: Password reset successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
   /vehicle:
     get:
       summary: Retrieve all vehicles
@@ -1712,6 +1769,13 @@ components:
           type: string
       required:
         - rankName
+    ResetPassword:
+      type: object
+      properties:
+        newPassword:
+          type: string
+      required:
+        - newPassword
     MessageResponse:
       type: object
       description: Generic message response
@@ -1767,6 +1831,12 @@ components:
           schema:
             $ref: '#/components/schemas/ApiError'
     NotFoundError:
+      description: Not Found Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+    ForbiddenError:
       description: Not Found Error
       content:
         application/json:
