@@ -54,6 +54,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -148,8 +156,8 @@
                                 ${project.basedir}/src/main/resources/openapi/lscrp_oas_0.2.5.yaml
                             </inputSpec>
                             <generatorName>spring</generatorName>
-                            <apiPackage>com.crp.ucp.server.api</apiPackage>
-                            <modelPackage>com.crp.ucp.server.model</modelPackage>
+                            <apiPackage>net.lscrp.ucp.server.api</apiPackage>
+                            <modelPackage>net.lscrp.ucp.server.model</modelPackage>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
