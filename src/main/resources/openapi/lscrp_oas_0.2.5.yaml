@@ -1484,13 +1484,14 @@ components:
           type: integer
           format: int32
         type:
-          type: string
-          enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
+          $ref: '#/components/schemas/PropertyType'
+        bizType:
+          $ref: '#/components/schemas/BizType'
         name:
           type: string
           maxLength: 128
         owner:
-          $ref: '#/components/schemas/Character'
+          type: string
         price:
           type: integer
         address:
@@ -1522,6 +1523,7 @@ components:
           type: integer
         isLocked:
           type: boolean
+
       required:
         - name
         - price
@@ -1534,6 +1536,7 @@ components:
         - interiorPositionY
         - interiorPositionZ
         - interior
+        - isLocked
     PropertyUpdate:
       type: object
       properties:
@@ -1573,7 +1576,11 @@ components:
           type: boolean
     PropertyType:
       type: string
-      enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE ]
+      enum: [ HOUSE, BUSINESS, APARTMENT, WAREHOUSE, GARAGE ]
+    BizType:
+      type: integer
+      enum: [ 0, 1, 2, 3, 4, 5 ]
+      x-enum-varnames: [ GROCERY_STORE, GAS_STATION, CLOTHING_STORE, OTHER, BAR, RESTAURANT ]
     Kick:
       type: object
       properties:

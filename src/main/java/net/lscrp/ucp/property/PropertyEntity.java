@@ -1,11 +1,12 @@
 package net.lscrp.ucp.property;
 
 import net.lscrp.ucp.character.CharacterEntity;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+
+import java.util.Objects;
 
 @Builder
 @AllArgsConstructor
@@ -81,15 +82,30 @@ public class PropertyEntity {
     @Column(name = "is_locked", nullable = false)
     private Boolean isLocked = false;
 
+    @Column(name = "biz_type")
+    @Convert(converter = BizTypeConverter.class)
+    private BizType bizType;
+
     @Getter
     @RequiredArgsConstructor
     public enum PropertyType {
         HOUSE("HOUSE"),
         BUSINESS("BUSINESS"),
         APARTMENT("APARTMENT"),
-        WAREHOUSE("WAREHOUSE");
+        WAREHOUSE("WAREHOUSE"),
+        GARAGE("GARAGE");
 
         private final String value;
     }
 
+    @Getter
+    @RequiredArgsConstructor
+    public enum BizType {
+        GROCERY_STORE,
+        GAS_STATION,
+        CLOTHING_STORE,
+        OTHER,
+        BAR,
+        RESTAURANT
+    }
 }

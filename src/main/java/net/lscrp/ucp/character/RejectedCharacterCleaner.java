@@ -11,7 +11,7 @@ import java.time.OffsetDateTime;
 @Component
 @RequiredArgsConstructor
 public class RejectedCharacterCleaner {
-    public static final OffsetDateTime CLEANUP_THRESHOLD = OffsetDateTime.now().minusDays(2);
+    public static final int CLEANUP_THRESHOLD_IN_DAYS = 2;
 
     private final CharacterService characterService;
 
@@ -23,7 +23,12 @@ public class RejectedCharacterCleaner {
                 .forEach(characterService::deleteCharacter);
     }
 
-    private static boolean isCharacterApplicationOldEnough(CharacterEntity a) {
-        return a.getApprovedAt().isBefore(CLEANUP_THRESHOLD);
+    private static boolean isCharacterApplicationOldEnough(CharacterEntity character) {
+        boolean before = character.getApprovedAt()
+                .isBefore(OffsetDateTime.now().minusDays(CLEANUP_THRESHOLD_IN_DAYS));
+
+        log.info(String.format("Rejected character %s is older then %d days and will be deleted",
+                character.getName(), CLEANUP_THRESHOLD_IN_DAYS));
+        return before;
     }
 }
