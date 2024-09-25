@@ -20,6 +20,10 @@ import static java.lang.String.format;
 @ControllerAdvice
 public class ApiExceptionHandler {
 
+
+    public static final String CHARACTERS_NAME = "characters.name";
+    public static final String ACCOUNTS_USERNAME = "accounts.username";
+
     @ExceptionHandler(AccountException.class)
     public ResponseEntity<ApiError> handleAccountNotFound(AccountException exception) {
         ApiError error = new ApiError();
@@ -47,13 +51,30 @@ public class ApiExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
+
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<ApiError> handleIntegrityConstraintViolation(
             SQLIntegrityConstraintViolationException exception) {
 
         ApiError error = new ApiError();
         error.setStatus(HttpStatus.BAD_REQUEST.toString());
-        error.setMessage(exception.getLocalizedMessage());
+
+        String exceptionMessage = exception.getMessage();
+
+        // Check for duplicate entry in 'characters.name'
+        if (exceptionMessage.contains(CHARACTERS_NAME)) {
+            String characterName = extractValueFromDuplicateEntryValueException(exceptionMessage);
+            error.setMessage(String.format("Ime karaktera '%s' je već zauzeto.", characterName));
+        }
+        // Check for duplicate entry in 'accounts.username'
+        else if (exceptionMessage.contains(ACCOUNTS_USERNAME)) {
+            String username = extractValueFromDuplicateEntryValueException(exceptionMessage);
+            error.setMessage(String.format("Username '%s' je već zauzet.", username));
+        } else {
+            error.setMessage(exception.getLocalizedMessage());
+        }
+
+        error.setReason(exception.getLocalizedMessage());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
@@ -98,5 +119,11 @@ public class ApiExceptionHandler {
         error.setMessage(exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+    }
+
+    private String extractValueFromDuplicateEntryValueException(String message) {
+        // Assuming the message format: "Duplicate entry 'value' for key 'some_key'"
+        String[] parts = message.split("'");
+        return parts.length > 1 ? parts[1] : "unknown";
     }
 }

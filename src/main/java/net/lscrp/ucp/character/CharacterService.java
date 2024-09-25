@@ -6,6 +6,7 @@ import net.lscrp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -54,7 +55,12 @@ public class CharacterService {
     }
 
     public void deleteCharacter(CharacterEntity character) {
-        characterRepository.deleteById(character.getId());
+        System.out.printf("delete %d", character.getId());
+        try {
+            characterRepository.delete(character);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {

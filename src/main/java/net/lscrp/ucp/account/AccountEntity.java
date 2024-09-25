@@ -38,7 +38,7 @@ public class AccountEntity implements UserDetails {
     private String password;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<CharacterEntity> characters;
 
     @Column(nullable = false)
