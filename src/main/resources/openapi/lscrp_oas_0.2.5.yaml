@@ -928,7 +928,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /online-players:
     get:
-      operationId: getOnlinePlayers
+      operationId: listOnlinePlayers
       tags:
         - onlinePlayersApi
       summary: Get right now online characters (in game)
@@ -940,10 +940,10 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: '#/components/schemas/OnlinePlayer'
         '500':
           description: Internal Server Error
-  /stats/online-players:
+  /online-players/stats:
     get:
       operationId: listOnlinePlayersStat
       tags:
@@ -987,18 +987,18 @@ components:
       properties:
         accountUsername:
           type: string
-        characterName:
+        name:
           type: string
-        characterSkin:
+        skin:
           type: integer
-        factionName:
+        faction:
           type: string
         administrator:
           type: integer
       required:
         - accountUsername
-        - characterName
-        - factionName
+        - name
+        - skin
         - administrator
     OnlinePlayerStat:
       type: object

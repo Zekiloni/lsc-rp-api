@@ -3,6 +3,7 @@ package net.lscrp.ucp.character;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import net.lscrp.ucp.account.AccountEntity;
+import net.lscrp.ucp.faction.FactionEntity;
 import net.lscrp.ucp.other.*;
 import net.lscrp.ucp.property.PropertyEntity;
 import net.lscrp.ucp.server.model.CharacterGender;
@@ -86,6 +87,9 @@ public class CharacterEntity {
 
     @Column(name = "faction_id")
     private Integer factionId;
+
+    @Transient
+    private FactionEntity faction;
 
     @Column(name = "rank_name")
     private String rankName;
