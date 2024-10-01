@@ -4,7 +4,7 @@ import net.lscrp.ucp.account.AccountEntity;
 import net.lscrp.ucp.account.AccountMapper;
 import net.lscrp.ucp.account.AccountService;
 import net.lscrp.ucp.account.log.LoginLogService;
-import net.lscrp.ucp.security.JwtAuthenticationService;
+import net.lscrp.ucp.config.JwtAuthenticationService;
 import net.lscrp.ucp.server.model.Account;
 import net.lscrp.ucp.server.model.Authentication;
 import net.lscrp.ucp.server.model.AuthenticationStatus;

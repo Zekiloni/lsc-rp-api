@@ -1,4 +1,4 @@
-package net.lscrp.ucp.security;
+package net.lscrp.ucp.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -47,6 +47,8 @@ public class AccountService implements UserDetailsService {
         account.setCreatedAt(OffsetDateTime.now());
         account.setAdmin(0);
         account.setMuted(0);
+        account.setPremium(0);
+        account.setPremiumCoins(0);
 
         accountRepository.save(account);
 
@@ -57,14 +59,18 @@ public class AccountService implements UserDetailsService {
         return accountRepository.save(account);
     }
 
-    private String hashPassword(String password) {
-        String salt = BCrypt.gensalt();
-        return BCrypt.hashpw(password, salt);
+    public void deleteAccount(Integer id) {
+
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return getAccountByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
+    }
+
+    private String hashPassword(String password) {
+        String salt = BCrypt.gensalt();
+        return BCrypt.hashpw(password, salt);
     }
 }

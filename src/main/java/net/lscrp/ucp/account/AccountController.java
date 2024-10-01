@@ -48,17 +48,23 @@ public class AccountController implements net.lscrp.ucp.server.api.AccountApi {
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN')")
     public ResponseEntity<List<LoginLogAudit>> listAccountLoginLogs(Integer accountId) {
         return ResponseEntity.ok(loginLogMapper.mapTo(loginLogService.getByAccountId(accountId)));
     }
 
     @Override
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN')")
     public ResponseEntity<Account> retrieveAccount(Integer accountId) {
         Account account = accountMapper.mapTo(accountService.getAccountById(accountId)
                 .orElseThrow(() -> throwAccountNotFoundException(accountId)));
         return ResponseEntity.ok(account);
     }
 
+    @Override
+    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN')")
+    public ResponseEntity<Void> deleteAccount(Integer accountId) {
+        accountService.deleteAccount(accountId);
+        return ResponseEntity.noContent().build();
+    }
 }

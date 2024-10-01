@@ -12,8 +12,8 @@ import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.List;
 
-import static net.lscrp.ucp.security.SecurityUtil.createDefaultGrantedAuthority;
-import static net.lscrp.ucp.security.SecurityUtil.createSimpleGrantedAuthority;
+import static net.lscrp.ucp.config.SecurityUtil.createDefaultGrantedAuthority;
+import static net.lscrp.ucp.config.SecurityUtil.createSimpleGrantedAuthority;
 
 @Getter
 @Setter
@@ -58,13 +58,21 @@ public class AccountEntity implements UserDetails {
     @Column(name = "updated_at")
     private OffsetDateTime updatedAt;
 
+    @Builder.Default
+    @Column(name = "premium")
+    private Integer premium = 0;
+
+    @Builder.Default
+    @Column(name = "premium_coins")
+    private Integer premiumCoins = 0;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> grantedAuthorities = createDefaultGrantedAuthority();
 
         if (admin > 0) {
             grantedAuthorities.add(createSimpleGrantedAuthority(RoleType.ADMIN_ROLE));
-            if (this.admin > 5) {
+            if (this.admin > 4) {
                 grantedAuthorities.add(createSimpleGrantedAuthority(RoleType.SUPER_ADMIN));
             }
         }

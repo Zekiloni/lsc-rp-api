@@ -61,13 +61,10 @@ public class ApiExceptionHandler {
 
         String exceptionMessage = exception.getMessage();
 
-        // Check for duplicate entry in 'characters.name'
         if (exceptionMessage.contains(CHARACTERS_NAME)) {
             String characterName = extractValueFromDuplicateEntryValueException(exceptionMessage);
             error.setMessage(String.format("Ime karaktera '%s' je već zauzeto.", characterName));
-        }
-        // Check for duplicate entry in 'accounts.username'
-        else if (exceptionMessage.contains(ACCOUNTS_USERNAME)) {
+        } else if (exceptionMessage.contains(ACCOUNTS_USERNAME)) {
             String username = extractValueFromDuplicateEntryValueException(exceptionMessage);
             error.setMessage(String.format("Username '%s' je već zauzet.", username));
         } else {

@@ -1,27 +1,33 @@
 package net.lscrp.ucp.character;
 
 import net.lscrp.ucp.account.AccountEntity;
+import net.lscrp.ucp.account.AccountException;
 import net.lscrp.ucp.account.AccountService;
+import net.lscrp.ucp.account.RoleType;
 import net.lscrp.ucp.server.model.CharacterUpdate;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import static net.lscrp.ucp.account.AccountUtil.throwAccountNotFoundException;
 import static net.lscrp.ucp.character.CharacterUtil.throwCharacterNotFoundException;
+import static net.lscrp.ucp.config.SecurityUtil.createSimpleGrantedAuthority;
 
 @Service
 @RequiredArgsConstructor
 public class CharacterService {
 
+    private static final Integer DEFAULT_BANK_MONEY = 5000;
+    public static final int DEFAULT_PLAYER_MONEY = 5000;
     private final CharacterRepository characterRepository;
 
     private final AccountService accountService;
@@ -51,16 +57,22 @@ public class CharacterService {
     }
 
     public void deleteCharacterById(Integer characterId) {
-        characterRepository.deleteById(characterId);
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof AccountEntity account) {
+            boolean isSuperAdmin = account.getAuthorities().contains(createSimpleGrantedAuthority(RoleType.SUPER_ADMIN));
+
+            CharacterEntity character = getCharacterById(characterId)
+                    .orElseThrow(throwCharacterNotFoundException(characterId));
+
+            if (!isSuperAdmin && !Objects.equals(character.getAccount().getId(), account.getId())) {
+                throw new AccountException("Niste autorizovani.");
+            }
+
+            characterRepository.delete(character);
+        }
     }
 
     public void deleteCharacter(CharacterEntity character) {
-        System.out.printf("delete %d", character.getId());
-        try {
-            characterRepository.delete(character);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        characterRepository.delete(character);
     }
 
     public CharacterEntity createCharacter(CharacterEntity character, Integer accountId) {
@@ -70,28 +82,8 @@ public class CharacterService {
         character.setAccount(account);
         character.setMaskId(UUID.randomUUID().toString().substring(0, 6));
         character.setRespawnTime(0);
-        character.setWalkingStyle(0);
-        character.setFightingStyle(0);
-        character.setAngle(BigDecimal.valueOf(0.00));
-        character.setArmour(0);
-        character.setBank(0);
-        character.setDrugAddiction(0);
-        character.setHealth(100);
-        character.setIsInGame(0);
-        character.setHours(0);
-        character.setMinutes(0);
-        character.setLevel(1);
-        character.setInterior(0);
-        character.setVirtualWorld(0);
-        character.setPositionX(BigDecimal.valueOf(0.0));
-        character.setPositionY(BigDecimal.valueOf(0.0));
-        character.setPositionZ(BigDecimal.valueOf(0.0));
-        character.setIsLeader(0);
-        character.setJob(-1);
-        character.setMoney(5000);
-        character.setSavings(0);
-        character.setPaycheck(0);
-        character.setState(0);
+        character.setBank(DEFAULT_BANK_MONEY);
+        character.setMoney(DEFAULT_PLAYER_MONEY);
         character.setCreatedAt(OffsetDateTime.now());
 
         return characterRepository.save(character);

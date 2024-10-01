@@ -1099,6 +1099,10 @@ components:
           type: integer
         referralCode:
           type: string
+        premium:
+          type: integer
+        premiumCoins:
+          type: integer
         createdAt:
           type: string
           format: date-time
@@ -1109,6 +1113,8 @@ components:
         - email
         - admin
         - characters
+        - premium
+        - premiumCoins
         - createdAt
     AccountCreate:
       type: object

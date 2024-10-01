@@ -1,6 +1,7 @@
 package net.lscrp.ucp.character;
 
 import net.lscrp.ucp.account.AccountException;
+import net.lscrp.ucp.server.api.CharacterApi;
 import net.lscrp.ucp.server.model.Character;
 import net.lscrp.ucp.server.model.CharacterCreate;
 import net.lscrp.ucp.server.model.CharacterUpdate;
@@ -26,11 +27,13 @@ public class CharacterController implements net.lscrp.ucp.server.api.CharacterAp
     private final CharacterMapper characterMapper;
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     public ResponseEntity<Character> patchCharacter(Integer id, CharacterUpdate characterUpdate) {
         return ResponseEntity.ok(characterMapper.mapTo(characterService.patchCharacter(id, characterUpdate)));
     }
 
     @Override
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public ResponseEntity<List<Character>> listUnapprovedCharacter() {
         return ResponseEntity.ok(characterMapper.mapTo(characterService.getAllUnapprovedCharacters()));
     }
@@ -57,6 +60,13 @@ public class CharacterController implements net.lscrp.ucp.server.api.CharacterAp
         }
 
         return ResponseEntity.ok(characterMapper.mapTo(characterService.getAllCharacter()));
+    }
+
+    @Override
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_SUPER_ADMIN')")
+    public ResponseEntity<Void> deleteCharacter(Integer id) {
+        characterService.deleteCharacterById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @Override

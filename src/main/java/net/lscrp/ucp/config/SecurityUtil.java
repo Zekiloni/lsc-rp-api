@@ -1,4 +1,4 @@
-package net.lscrp.ucp.security;
+package net.lscrp.ucp.config;
 
 import net.lscrp.ucp.account.RoleType;
 import lombok.experimental.UtilityClass;
