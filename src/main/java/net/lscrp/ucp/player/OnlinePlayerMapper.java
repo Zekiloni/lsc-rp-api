@@ -16,6 +16,7 @@ public interface OnlinePlayerMapper {
             @Mapping(source = "account.username", target = "accountUsername"),
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "skin", target = "skin"),
+            @Mapping(source = "account.admin", target = "administrator"),
             @Mapping(source = "faction.name", target = "faction"),
     })
     OnlinePlayer mapTo(CharacterEntity character);

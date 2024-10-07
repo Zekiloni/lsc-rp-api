@@ -1,6 +1,8 @@
 package net.lscrp.ucp.account;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +24,10 @@ public class AccountService implements UserDetailsService {
         return this.accountRepository.findAll();
     }
 
+    public Page<AccountEntity> getAllAccounts(Pageable pageable) {
+        return this.accountRepository.findAll(pageable);
+    }
+
     public Optional<AccountEntity> getAccountById(Integer id) {
         return this.accountRepository.findById(id);
     }
@@ -30,12 +36,12 @@ public class AccountService implements UserDetailsService {
         return this.accountRepository.findByEmail(email);
     }
 
-    public List<AccountEntity> getByUsernameOrEmail(String username, String email) {
-        return accountRepository.findByUsernameContainingOrEmailContaining(username, email);
+    public Page<AccountEntity> getByUsernameOrEmail(String username, String email, Pageable pageable) {
+        return accountRepository.findByUsernameContainingOrEmailContaining(username, email, pageable);
     }
 
-    public List<AccountEntity> getByUsernameAndEmail(String username, String email) {
-        return accountRepository.findByUsernameContainingAndEmailContaining(username, email);
+    public Page<AccountEntity> getByUsernameAndEmail(String username, String email, Pageable pageable) {
+        return accountRepository.findByUsernameContainingAndEmailContaining(username, email, pageable);
     }
 
     public Optional<AccountEntity> getAccountByUsername(String username) {

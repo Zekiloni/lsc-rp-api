@@ -24,12 +24,4 @@ public interface CharacterMapper {
     CharacterEntity mapTo(Character character);
 
     List<Character> mapTo(List<CharacterEntity> characters);
-
-    default Boolean mapTo(Integer i) {
-        return i == 1;
-    }
-
-    default Integer mapTo(Boolean value) {
-        return value ? 1 : 0;
-    }
 }

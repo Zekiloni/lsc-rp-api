@@ -34,7 +34,8 @@ public class CorsConfig {
                                 HttpMethod.PATCH.name()
                         )
                         .allowedOrigins(devAllowedOrigin, lscrpAllowedOrigin, wwwLscrpAllowedOrigin)
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .exposedHeaders("*");
             }
         };
     }

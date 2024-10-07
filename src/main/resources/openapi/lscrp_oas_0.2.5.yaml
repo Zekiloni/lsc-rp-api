@@ -48,6 +48,18 @@ paths:
             type: string
           required: false
           description: Filter accounts by email address
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            default: 0
+          required: true
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          required: true
       x-roles-allowed:
         - user
         - admin
@@ -55,6 +67,15 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            X-Total-Count:
+              schema:
+                type: integer
+              description: Total elements count
+            X-Result-Count:
+              schema:
+                type: integer
+              description: Result elements count
           content:
             application/json:
               schema:
@@ -1092,6 +1113,8 @@ components:
         lastLoginAt:
           type: string
           format: date-time
+        totalHours:
+          type: integer
         updatedAt:
           type: string
           format: date-time
@@ -1113,6 +1136,7 @@ components:
         - email
         - admin
         - characters
+        - totalHours
         - premium
         - premiumCoins
         - createdAt
@@ -1362,6 +1386,9 @@ components:
           type: number
         numberplate:
           type: string
+        mileage:
+          type: number
+          format: float
         positionX:
           type: number
           format: float
@@ -1401,6 +1428,7 @@ components:
         - price
         - owner
         - positionX
+        - mileage
         - positionY
         - positionZ
         - rotation

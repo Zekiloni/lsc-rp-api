@@ -1,6 +1,5 @@
 package net.lscrp.ucp.player;
 
-import net.lscrp.ucp.faction.FactionService;
 import net.lscrp.ucp.server.api.OnlinePlayersApi;
 import lombok.RequiredArgsConstructor;
 import net.lscrp.ucp.server.model.OnlinePlayer;

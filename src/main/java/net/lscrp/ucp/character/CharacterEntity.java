@@ -3,6 +3,7 @@ package net.lscrp.ucp.character;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import net.lscrp.ucp.account.AccountEntity;
+import net.lscrp.ucp.common.BooleanIntegerConverter;
 import net.lscrp.ucp.faction.FactionEntity;
 import net.lscrp.ucp.other.*;
 import net.lscrp.ucp.property.PropertyEntity;
@@ -47,12 +48,14 @@ public class CharacterEntity {
     private AccountEntity account;
 
     @Builder.Default
+    @Convert(converter = BooleanIntegerConverter.class)
     @Column(name = "is_leader")
-    private Integer isLeader = 0;
+    private Boolean isLeader = false;
 
     @Builder.Default
+    @Convert(converter = BooleanIntegerConverter.class)
     @Column(name = "is_in_game")
-    private Integer isInGame = 0;
+    private Boolean isInGame = false;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "gender")

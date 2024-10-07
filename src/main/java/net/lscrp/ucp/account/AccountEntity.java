@@ -4,6 +4,7 @@ import net.lscrp.ucp.character.CharacterEntity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import net.lscrp.ucp.faction.FactionEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import static net.lscrp.ucp.config.SecurityUtil.createDefaultGrantedAuthority;
 import static net.lscrp.ucp.config.SecurityUtil.createSimpleGrantedAuthority;
@@ -65,6 +67,26 @@ public class AccountEntity implements UserDetails {
     @Builder.Default
     @Column(name = "premium_coins")
     private Integer premiumCoins = 0;
+
+    public int getTotalHours() {
+        int totalMinutes = characters.stream()
+                .mapToInt(CharacterEntity::getMinutes)
+                .sum();
+
+        int totalHours = characters.stream()
+                .mapToInt(CharacterEntity::getHours)
+                .sum();
+
+        totalHours += totalMinutes / 60;
+
+        return totalHours;
+    }
+
+    public boolean isFactionLeader(FactionEntity faction) {
+        return characters.stream()
+                .filter(character -> Objects.equals(character.getFactionId(), faction.getId()))
+                .anyMatch(CharacterEntity::getIsLeader);
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

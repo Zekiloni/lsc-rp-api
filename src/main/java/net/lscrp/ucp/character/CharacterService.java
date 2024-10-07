@@ -28,6 +28,7 @@ public class CharacterService {
 
     private static final Integer DEFAULT_BANK_MONEY = 5000;
     public static final int DEFAULT_PLAYER_MONEY = 5000;
+
     private final CharacterRepository characterRepository;
 
     private final AccountService accountService;
